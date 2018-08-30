@@ -9,10 +9,18 @@ import CreateItem from './../screens/CreateItem';
 import Listings from './../screens/Listings';
 import Messages from './../screens/Messages';
 import Profile from './../screens/Profile';
+import CommunityPartners from './../screens/CommunityPartners';
+import AboutUs from './../screens/AboutUs';
 
 const aboutStack = createStackNavigator({
   About: {
     screen: About,
+  },
+  AboutUs: {
+    screen: AboutUs,
+  },
+  CommunityPartners: {
+    screen: CommunityPartners,
   },
 });
 const createItemStack = createStackNavigator({
