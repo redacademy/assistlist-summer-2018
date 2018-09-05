@@ -1,38 +1,64 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import styles from './styles';
+import { View, Text, Image, Alert } from 'react-native';
+import Splash from './components/Splash/Splash';
 
 export default class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      isVisible: true,
+    };
+  }
+
+  hide_splash = () => {
+    this.setState({
+      isVisible: false,
+    });
+  };
+
+  componentDidMount() {
+    var that = this;
+
+    setTimeout(function() {
+      that.hide_splash();
+    }, 1200);
+  }
+
   render() {
+    let Splash_Screen = (
+      <View style={styles.splashRoot}>
+        <View style={styles.splashChild}>
+          <Image
+            source={require('../js/assets/Images/Logo/Name-Logo.png')}
+            style={styles.mainLogo}
+          />
+          <View style={styles.loadContainer}>
+            <Splash
+              style={styles.loadS}
+              source={require('../js/assets/Images/Loading/Rectangle-Small.png')}
+            />
+            <Splash
+              style={styles.loadM}
+              source={require('../js/assets/Images/Loading/Rectangle-Medium.png')}
+            />
+            <Splash
+              style={styles.loadL}
+              source={require('../js/assets/Images/Loading/Rectangle-Large.png')}
+            />
+          </View>
+          <Text style={styles.loadingText}>Loading...</Text>
+        </View>
+      </View>
+    );
+
     return (
-      <View style={styles.container}>
-        <Text>Welcome to AssistList</Text>
+      <View style={styles.MainContainer}>
+        <Text style={{ textAlign: 'center' }}> Welcome to Assist List! </Text>
+
+        {this.state.isVisible === true ? Splash_Screen : null}
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
