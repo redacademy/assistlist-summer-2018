@@ -7,9 +7,11 @@
     "test": "jest"
   },
   "dependencies": {
+    "apollo-boost": "^0.1.15",
     "final-form": "^4.10.0",
     "moment": "^2.22.2",
     "react": "16.4.1",
+    "react-apollo": "^2.1.11",
     "react-final-form": "^3.6.5",
     "react-native": "0.56.0",
     "react-native-app-intro": "^1.1.5",
