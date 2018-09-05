@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { Form, Field } from 'react-final-form';
+import { AccountInput } from '../../components/AccountInput/AccountInput';
 
 const Login = () => {
   return (
@@ -8,13 +9,8 @@ const Login = () => {
       onSubmit={values => console.log(values)}
       render={({ handleSubmit, pristine, values }) => (
         <Fragment>
-          <Field name="test">
-            {({ input, meta }) => (
-              <Fragment>
-                <TextInput style={{ width: 200, backgroundColor: 'grey' }} {...input}/>
-                {console.log(input)}
-              </Fragment>
-            )}
+          <Field name="email">
+            {({ input, meta }) => <AccountInput input={input} name="Email" />}
           </Field>
           <Field>
             {({ input, meta }) => (
