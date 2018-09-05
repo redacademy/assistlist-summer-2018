@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styles from './styles';
-import { View, Text, Image, Alert } from 'react-native';
-import Splash from './components/Splash/Splash';
+import { View, StatusBar, Text, Image, Alert } from 'react-native';
 
 export default class App extends Component {
   constructor() {
@@ -19,11 +18,11 @@ export default class App extends Component {
   };
 
   componentDidMount() {
-    var that = this;
+    let hide = this.hide_splash;
 
-    setTimeout(function() {
-      that.hide_splash();
-    }, 1200);
+    setTimeout(() => {
+      hide();
+    }, 1000);
   }
 
   render() {
@@ -34,27 +33,13 @@ export default class App extends Component {
             source={require('../js/assets/Images/Logo/Name-Logo.png')}
             style={styles.mainLogo}
           />
-          <View style={styles.loadContainer}>
-            <Splash
-              style={styles.loadS}
-              source={require('../js/assets/Images/Loading/Rectangle-Small.png')}
-            />
-            <Splash
-              style={styles.loadM}
-              source={require('../js/assets/Images/Loading/Rectangle-Medium.png')}
-            />
-            <Splash
-              style={styles.loadL}
-              source={require('../js/assets/Images/Loading/Rectangle-Large.png')}
-            />
-          </View>
-          <Text style={styles.loadingText}>Loading...</Text>
         </View>
       </View>
     );
 
     return (
       <View style={styles.MainContainer}>
+        <StatusBar barStyle="dark-content" />
         <Text style={{ textAlign: 'center' }}> Welcome to Assist List! </Text>
 
         {this.state.isVisible === true ? Splash_Screen : null}
