@@ -2,22 +2,55 @@
 # based on which the GraphQL API is generated
 
 type User @model {
-  id: ID! @isUnique
-  name: String
-  dateOfBirth: DateTime
-
-  # Uncomment below - you can declare relations between models like this
-
-  # posts: [Post!]! @relation(name: "UserPosts")
+  id: ID! @isUnique # read-only (managed by Graphcool)
+  createdAt: DateTime! # read-only (managed by Graphcool)
+  updatedAt: DateTime! # read-only (managed by Graphcool)
+  items: [Item!]! @relation(name: "UserItems")
+  username: String!
+  email: String! @isUnique
+  password: String!
 }
 
+type Item @model {
+  id: ID! @isUnique
+  title: String!
+  price: Int
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  category: Category! @relation(name: "ItemCategory")
+  location: Location! @relation(name: "ItemLocation")
+  user: User! @relation(name: "UserItems")
+}
 
-# Uncomment the model below as well
+type Category @model {
+  id: ID! @isUnique
+  title: String!
+  subs: [SubCategory!]! @relation(name: "ItemSubCategory")
+  items: [Item!]! @relation(name: "ItemCategory")
+}
 
-# type Post @model {
-#   id: ID! @isUnique
-#   title: String!
-#
-#   # Every relation also required a back-relation (to determine 1:1, 1:n or n:m)
-#   author: User! @relation(name: "UserPosts")
+type SubCategory @model {
+  id: ID! @isUnique
+  title: String!
+  category: Category! @relation(name: "ItemSubCategory")
+}
+
+type Location @model {
+  id: ID! @isUnique
+  title: String!
+  item: [Item!]! @relation(name: "ItemLocation")
+}
+
+# added by email-password template: (please uncomment)
+
+# added by google template: (please uncomment)
+# type User @model {
+#   # Required system field:
+#   id: ID! @isUnique # read-only (managed by Graphcool)
+
+#   # Optional system fields (remove if not needed):
+#   createdAt: DateTime! # read-only (managed by Graphcool)
+#   updatedAt: DateTime! # read-only (managed by Graphcool)
+
+# googleUserId: String @isUnique
 # }
