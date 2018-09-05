@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
+import LoginContainer from './screens/Login/';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -12,7 +13,8 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Welcome to AssistList</Text>
+        <LoginContainer />
+        {/* <Text>Welcome to AssistList</Text> */}
       </View>
     );
   }
