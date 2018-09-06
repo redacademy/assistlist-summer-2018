@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Login from './AccountForm'
+import AccountForm from './AccountForm'
 
-export default class LoginContainer extends Component {
+export default class AccountFormContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -15,7 +15,7 @@ export default class LoginContainer extends Component {
   }
   render() {
     return (
-      <Login formState={this.state.formState} toggleForm={() => this.toggleFormState()}/>
+      <AccountForm formState={this.state.formState} toggleForm={() => this.toggleFormState()}/>
     );
   }
 }

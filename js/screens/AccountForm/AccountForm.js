@@ -5,7 +5,7 @@ import AccountInput from '../../components/AccountInput';
 import Button from '../../components/Button';
 import styles from './styles';
 
-const Login = ({ formState, toggleForm }) => {
+const AccountForm = ({ formState, toggleForm }) => {
   return (
     <View style={styles.container}>
       <Image
@@ -79,4 +79,4 @@ const Login = ({ formState, toggleForm }) => {
   );
 };
 
-export default Login;
+export default AccountForm;
