@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { fonts } from '../../config/styles'  
+import { fonts, colors } from '../../config/styles'  
 
 const {height, width} = Dimensions.get('window');
 
@@ -19,8 +19,9 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: fonts.main,
-    color: '#0082B5',
+    color: colors.darkBlue,
     fontSize: 16,
+    marginTop: 5,
     textAlign: 'center',
   },
   link: {
@@ -36,6 +37,17 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 20,
+  },
+  error: {
+    position: 'absolute',
+    fontFamily: fonts.main,
+    color: colors.red,
+  },
+  loginError: {
+    top: 90,
+  },
+  signupError: {
+    top: 193,
   }
 });
 
