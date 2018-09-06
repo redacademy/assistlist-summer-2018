@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Login from './Login'
+import Login from './AccountForm'
 
 export default class LoginContainer extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ export default class LoginContainer extends Component {
   }
   render() {
     return (
-      <Login formState={this.state.formState} toggle={() => this.toggleFormState()}/>
+      <Login formState={this.state.formState} toggleForm={() => this.toggleFormState()}/>
     );
   }
 }

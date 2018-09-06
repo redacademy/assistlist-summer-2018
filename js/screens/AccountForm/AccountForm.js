@@ -5,7 +5,7 @@ import AccountInput from '../../components/AccountInput';
 import Button from '../../components/Button';
 import styles from './styles';
 
-const Login = ({ formState, toggle }) => {
+const Login = ({ formState, toggleForm }) => {
   return (
     <View style={styles.container}>
       <Image
@@ -64,7 +64,7 @@ const Login = ({ formState, toggle }) => {
         <View style={styles.footer}>
           <Text style={styles.text}>Don't have an account?</Text>
           <View style={styles.actions}>
-            <TouchableOpacity onPress={toggle}>
+            <TouchableOpacity onPress={toggleForm}>
               <Text style={[styles.text, styles.link]}>Register</Text>
             </TouchableOpacity>
             <Text style={styles.text}> or </Text>

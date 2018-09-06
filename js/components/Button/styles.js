@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { fonts, colors } from '../../config/styles'
 
 const styles = StyleSheet.create({
   button: {
@@ -8,21 +9,22 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   buttonText: {
+    fontFamily: fonts.main,
     textAlign: 'center',
     color: 'white',
     fontSize: 24,
   },
   darkBlue: {
-    backgroundColor: '#0082B5'
+    backgroundColor: colors.darkBlue,
   },
   lightBlue: {
-    backgroundColor: '#00ADCB'
+    backgroundColor: colors.lightBlue,
   },
   green: {
-    backgroundColor: '#5DA50A'
+    backgroundColor: colors.green,
   },
   grey: {
-    backgroundColor: '#B1B1B1'
+    backgroundColor: colors.grey,
   },
 });
 

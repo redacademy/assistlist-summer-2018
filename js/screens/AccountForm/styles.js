@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { fonts } from '../../config/styles'  
 
 const {height, width} = Dimensions.get('window');
 
@@ -17,6 +18,7 @@ const styles = StyleSheet.create({
     marginBottom: 60,
   },
   text: {
+    fontFamily: fonts.main,
     color: '#0082B5',
     fontSize: 16,
     textAlign: 'center',
