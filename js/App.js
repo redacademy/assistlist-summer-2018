@@ -1,38 +1,49 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import styles from './styles';
+import { View, StatusBar, Text, Image, Alert } from 'react-native';
 
 export default class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      isVisible: true,
+    };
+  }
+
+  hide_splash = () => {
+    this.setState({
+      isVisible: false,
+    });
+  };
+
+  componentDidMount() {
+    let hide = this.hide_splash;
+
+    setTimeout(() => {
+      hide();
+    }, 1000);
+  }
+
   render() {
+    let Splash_Screen = (
+      <View style={styles.splashRoot}>
+        <View style={styles.splashChild}>
+          <Image
+            source={require('../js/assets/Images/Logo/Name-Logo.png')}
+            style={styles.mainLogo}
+          />
+        </View>
+      </View>
+    );
+
     return (
-      <View style={styles.container}>
-        <Text>Welcome to AssistList</Text>
+      <View style={styles.MainContainer}>
+        <StatusBar barStyle="dark-content" />
+        <Text style={{ textAlign: 'center' }}> Welcome to Assist List! </Text>
+
+        {this.state.isVisible === true ? Splash_Screen : null}
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
