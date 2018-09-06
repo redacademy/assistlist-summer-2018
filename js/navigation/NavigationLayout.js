@@ -7,7 +7,6 @@ import {
 import About from './../screens/About';
 import CreateItem from './../screens/CreateItem';
 import Listings from './../screens/Listings';
-import Login from './../screens/Login';
 import Messages from './../screens/Messages';
 import Profile from './../screens/Profile';
 
@@ -24,11 +23,6 @@ const createItemStack = createStackNavigator({
 const listingsStack = createStackNavigator({
   Listings: {
     screen: Listings,
-  },
-});
-const loginStack = createStackNavigator({
-  Login: {
-    screen: Login,
   },
 });
 const messagesStack = createStackNavigator({
