@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Messages from './Messages'
-
+import Messages from './Messages';
 export default class MessagesContainer extends Component {
+  static navigationOptions = {
+    title: 'Messages',
+  };
   render() {
-    return (
-      <Messages />
-    );
+    return <Messages />;
   }
 }
