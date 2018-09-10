@@ -2,6 +2,7 @@ import { StyleSheet, Dimensions } from 'react-native';
 import { fonts, colors } from '../../config/styles'  
 
 const {height, width} = Dimensions.get('window');
+console.log(height, width)
 
 const styles = StyleSheet.create({
   container: {
@@ -9,13 +10,13 @@ const styles = StyleSheet.create({
     height: height,
     width: width,
     alignItems: 'center',
-    justifyContent: 'flex-start'
+    justifyContent: 'center'
   },
   logo: {
-    width: 276,
-    height: 171,
-    marginTop: 84,
+    maxWidth: width * 0.733,
+    maxHeight: height * 0.256,
     marginBottom: 60,
+    overflow: 'visible',
   },
   text: {
     fontFamily: fonts.main,
@@ -29,7 +30,6 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline'
   },
   actions: {
-    marginLeft: -5,
     flexDirection: 'row',
   },
   footer: {
@@ -39,16 +39,9 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   error: {
-    position: 'absolute',
     fontFamily: fonts.main,
     color: colors.red,
   },
-  loginError: {
-    top: 90,
-  },
-  signupError: {
-    top: 193,
-  }
 });
 
 export default styles;

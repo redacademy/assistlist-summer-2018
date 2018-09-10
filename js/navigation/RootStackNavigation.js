@@ -1,10 +1,10 @@
 import { createStackNavigator } from 'react-navigation';
 
-import NavigationLayout, { accountFormStack } from './NavigationLayout';
+import NavigationLayout, { authStack } from './NavigationLayout';
 
 export default createStackNavigator(
   {
-    accountFormStack,
+    authStack,
     NavigationLayout,
   },
   {

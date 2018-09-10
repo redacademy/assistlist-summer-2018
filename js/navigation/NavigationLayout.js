@@ -11,18 +11,14 @@ import Messages from './../screens/Messages';
 import Profile from './../screens/Profile';
 import AccountForm from '../screens/AccountForm';
 
-export const accountFormStack = createStackNavigator(
+export const authStack = createStackNavigator(
   {
     accountForm: {
       screen: AccountForm,
     },
   },
   {
-    navigationOptions: {
-      headerStyle: {
-        height: 0,
-      },
-    },
+    headerMode: 'none',
   }
 );
 const aboutStack = createStackNavigator({
