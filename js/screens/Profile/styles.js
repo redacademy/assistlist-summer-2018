@@ -3,8 +3,6 @@ import { fonts, colors } from '../../config/styles';
 
 const { height, width } = Dimensions.get('window');
 
-// console.log(height, width); // 568 320
-
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
@@ -14,13 +12,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomColor: colors.darkBlue,
     borderBottomWidth: 0.5,
-    paddingVertical: 25,
+    paddingVertical: 20,
   },
   linkText: {
     marginTop: 10,
-    color: colors.lightBlue,
+    color: colors.darkBlue,
     fontFamily: fonts.main,
     fontSize: 24,
+    fontWeight: 'bold',
+  },
+  editText: {
+    marginTop: 5,
+    fontFamily: fonts.main,
   },
   icon: {
     height: 60,
@@ -40,9 +43,6 @@ const styles = StyleSheet.create({
   },
   gridText: {
     marginTop: 15,
-    fontFamily: fonts.main,
-  },
-  editText: {
     fontFamily: fonts.main,
   },
 });
