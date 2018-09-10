@@ -4,6 +4,7 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import LoadingIndicator from '../../components/LoadingIndicator';
 import { GET_ITEMS } from '../../config/queries';
+import {Text} from 'react-native'
 
 export default class ListingsContainer extends Component {
   static navigationOptions = {
