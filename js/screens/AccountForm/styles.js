@@ -2,7 +2,6 @@ import { StyleSheet, Dimensions } from 'react-native';
 import { fonts, colors } from '../../config/styles'  
 
 const {height, width} = Dimensions.get('window');
-console.log(height, width)
 
 const styles = StyleSheet.create({
   container: {
@@ -10,13 +9,12 @@ const styles = StyleSheet.create({
     height: height,
     width: width,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   logo: {
-    maxWidth: width * 0.733,
-    maxHeight: height * 0.256,
-    marginBottom: 60,
-    overflow: 'visible',
+    flex: 0.45,
+    resizeMode: 'contain',
+    marginBottom: 20
   },
   text: {
     fontFamily: fonts.main,
@@ -41,6 +39,9 @@ const styles = StyleSheet.create({
   error: {
     fontFamily: fonts.main,
     color: colors.red,
+  },
+  form: {
+    marginTop: 30,
   },
 });
 

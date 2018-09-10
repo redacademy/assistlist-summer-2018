@@ -29,13 +29,13 @@ export default async (event: FunctionEvent<EventData>) => {
 
     // no user with this email
     if (!user) {
-      return { error: 'Please enter a valid email' }
+      return { error: 'Incorrect username or password' }
     }
 
     // check password
     const passwordIsCorrect = await bcrypt.compare(password, user.password)
     if (!passwordIsCorrect) {
-      return { error: 'Incorrect password' }
+      return { error: 'Incorrect username or password' }
     }
 
     // generate node token for existing User node

@@ -17,15 +17,15 @@ export default class AccountFormContainer extends Component {
   render() {
     return (
       <AuthContainer>
-        {({ signup, login }) => (
-          <AccountForm
-            formState={this.state.formState}
-            toggleForm={() => this.toggleFormState()}
-            signup={signup}
-            login={login}
-            navigation={this.props.navigation}
-          />
-        )}
+        {({ signup, login }) =>
+            <AccountForm
+              formState={this.state.formState}
+              toggleForm={() => this.toggleFormState()}
+              signup={signup}
+              login={login}
+              navigation={this.props.navigation}
+            />
+        }
       </AuthContainer>
     );
   }

@@ -4,14 +4,13 @@ import {
   View,
   TouchableOpacity,
   Image,
-  ActivityIndicator,
 } from 'react-native';
 import { Form, Field } from 'react-final-form';
 import AccountInput from '../../components/AccountInput';
 import Button from '../../components/Button';
 import styles from './styles';
 import { validateLogin, validateSignup } from './helpers/validation';
-import { colors } from '../../config/styles';
+import LoadingIndicator from '../../components/LoadingIndicator'
 
 const AccountForm = ({ formState, toggleForm, signup, login, navigation }) => {
   return (
@@ -21,7 +20,7 @@ const AccountForm = ({ formState, toggleForm, signup, login, navigation }) => {
         source={require('../../assets/images/Logo/Name-Logo.png')}
       />
       {(login.loading || signup.loading) && (
-        <ActivityIndicator size="large" color={colors.lightBlue} />
+        <LoadingIndicator />
       )}
       <View>
         <Form
@@ -34,9 +33,7 @@ const AccountForm = ({ formState, toggleForm, signup, login, navigation }) => {
                       console.log(res);
                     })
                     .then(() => navigation.navigate('Listings'))
-                    .catch(err => {
-                      console.log(err);
-                    });
+                    .catch(err => err);
                 }
               : values => {
                   login
@@ -45,14 +42,12 @@ const AccountForm = ({ formState, toggleForm, signup, login, navigation }) => {
                       console.log(res);
                     })
                     .then(() => navigation.navigate('Listings'))
-                    .catch(err => {
-                      console.log(err);
-                    });
+                    .catch(err => err);
                 }
           }
           validate={formState ? validateSignup : validateLogin}
           render={({ handleSubmit }) => (
-            <Fragment>
+            <View style={styles.form}>
               <Field name="email">
                 {({ input, meta }) => (
                   <Fragment>
@@ -134,7 +129,7 @@ const AccountForm = ({ formState, toggleForm, signup, login, navigation }) => {
                   <Button onPress={handleSubmit} name="Sign In" color="green" />
                 )}
               </View>
-            </Fragment>
+            </View>
           )}
         />
       </View>
