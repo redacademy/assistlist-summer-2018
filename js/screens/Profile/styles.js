@@ -1,6 +1,9 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import { fonts, colors } from '../../config/styles';
+
 const { height, width } = Dimensions.get('window');
+
+// console.log(height, width); // 568 320
 
 const styles = StyleSheet.create({
   container: {
@@ -11,8 +14,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomColor: colors.darkBlue,
     borderBottomWidth: 0.5,
-    paddingTop: height * 0.05,
-    paddingBottom: height * 0.05,
+    paddingVertical: 25,
   },
   linkText: {
     marginTop: 10,
@@ -21,12 +23,12 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   icon: {
-    height: width * 0.19,
-    width: width * 0.19,
+    height: 60,
+    width: 60,
     overflow: 'visible',
   },
   linkGrid: {
-    paddingTop: height * 0.02,
+    paddingTop: 10,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
@@ -34,7 +36,7 @@ const styles = StyleSheet.create({
   gridItem: {
     alignItems: 'center',
     width: width * 0.5,
-    marginTop: 20,
+    marginTop: 25,
   },
   gridText: {
     marginTop: 15,
