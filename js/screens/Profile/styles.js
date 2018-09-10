@@ -12,10 +12,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomColor: colors.darkBlue,
     borderBottomWidth: 0.5,
-    paddingVertical: 20,
+    paddingVertical: 15,
+  },
+  userIcon: {
+    height: height / 5,
+    width: width / 5,
+    overflow: 'visible',
   },
   linkText: {
-    marginTop: 10,
     color: colors.darkBlue,
     fontFamily: fonts.main,
     fontSize: 24,
@@ -26,23 +30,22 @@ const styles = StyleSheet.create({
     fontFamily: fonts.main,
   },
   icon: {
-    height: 60,
-    width: 60,
-    overflow: 'visible',
+    height: height / 6,
+    width: width / 6,
+    resizeMode: 'contain',
   },
   linkGrid: {
-    paddingTop: 10,
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
   },
   gridItem: {
+    flexGrow: 1,
     alignItems: 'center',
-    width: width * 0.5,
-    marginTop: 25,
+    width: width / 2,
   },
   gridText: {
-    marginTop: 15,
+    marginBottom: 20,
     fontFamily: fonts.main,
   },
 });

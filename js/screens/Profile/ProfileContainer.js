@@ -6,6 +6,6 @@ export default class ProfileContainer extends Component {
     title: 'My Profile',
   };
   render() {
-    return <Profile />;
+    return <Profile navigation={this.props.navigation} />;
   }
 }

@@ -4,18 +4,21 @@ import Icon from 'react-native-vector-icons/Feather';
 import { colors } from '../../config/styles';
 import styles from './styles';
 
-const Profile = () => {
+const Profile = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.profileHeader}>
-        <Icon name="user" size={80} color={colors.darkBlue} />
+        <Image
+          style={styles.userIcon}
+          source={require('../../assets/images/Icons/default-user.png')}
+        />
         <Text style={styles.linkText}>Me</Text>
         <TouchableOpacity onPress={() => console.log('add picture')}>
           <Text style={styles.editText}>edit</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.linkGrid}>
-        <TouchableOpacity onPress={() => console.log('listings')}>
+        <TouchableOpacity onPress={() => navigation.navigate('MyListings')}>
           <View style={styles.gridItem}>
             <Image
               style={styles.icon}
@@ -24,7 +27,7 @@ const Profile = () => {
             <Text style={styles.gridText}>My listings</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => console.log('Notifications')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Notifications')}>
           <View style={styles.gridItem}>
             <Image
               style={styles.icon}
@@ -33,7 +36,7 @@ const Profile = () => {
             <Text style={styles.gridText}>Notifications</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => console.log('Edit Info')}>
+        <TouchableOpacity onPress={() => navigation.navigate('EditProfile')}>
           <View style={styles.gridItem}>
             <Image
               style={styles.icon}
@@ -44,7 +47,10 @@ const Profile = () => {
         </TouchableOpacity>
         <TouchableOpacity onPress={() => console.log('Logout')}>
           <View style={styles.gridItem}>
-            <Icon name="power" size={60} color={colors.darkBlue} />
+            <Image
+              style={styles.icon}
+              source={require('../../assets/images/Icons/power.png')}
+            />
             <Text style={styles.gridText}>Logout</Text>
           </View>
         </TouchableOpacity>

@@ -9,6 +9,9 @@ import CreateItem from './../screens/CreateItem';
 import Listings from './../screens/Listings';
 import Messages from './../screens/Messages';
 import Profile from './../screens/Profile';
+import EditProfile from './../screens/EditProfile';
+import MyListings from './../screens/MyListings';
+import Notifications from './../screens/Notifications';
 
 const aboutStack = createStackNavigator({
   About: {
@@ -33,6 +36,15 @@ const messagesStack = createStackNavigator({
 const profileStack = createStackNavigator({
   Profile: {
     screen: Profile,
+  },
+  EditProfile: {
+    screen: EditProfile,
+  },
+  MyListings: {
+    screen: MyListings,
+  },
+  Notifications: {
+    screen: Notifications,
   },
 });
 
