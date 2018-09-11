@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   logo: {
-    flex: 0.45,
+    flex: 0.55,
     resizeMode: 'contain',
     marginBottom: 20
   },
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   link: {
-    fontWeight: 'bold',
+    fontWeight: '700',
     textDecorationLine: 'underline'
   },
   actions: {
@@ -35,6 +35,16 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 20,
+    paddingVertical: 5,
+    borderRadius: 7,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.green,
+  },
+  buttonText: {
+    fontFamily: fonts.main,
+    color: 'white',
+    fontSize: 25,
   },
   error: {
     fontFamily: fonts.main,

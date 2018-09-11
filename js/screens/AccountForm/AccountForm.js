@@ -1,16 +1,10 @@
 import React, { Fragment } from 'react';
-import {
-  Text,
-  View,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
+import { Text, View, TouchableOpacity, Image } from 'react-native';
 import { Form, Field } from 'react-final-form';
 import AccountInput from '../../components/AccountInput';
-import Button from '../../components/Button';
 import styles from './styles';
 import { validateLogin, validateSignup } from './helpers/validation';
-import LoadingIndicator from '../../components/LoadingIndicator'
+import LoadingIndicator from '../../components/LoadingIndicator';
 
 const AccountForm = ({ formState, toggleForm, signup, login, navigation }) => {
   return (
@@ -19,9 +13,7 @@ const AccountForm = ({ formState, toggleForm, signup, login, navigation }) => {
         style={styles.logo}
         source={require('../../assets/images/Logo/Name-Logo.png')}
       />
-      {(login.loading || signup.loading) && (
-        <LoadingIndicator />
-      )}
+      {(login.loading || signup.loading) && <LoadingIndicator />}
       <View>
         <Form
           onSubmit={
@@ -122,14 +114,22 @@ const AccountForm = ({ formState, toggleForm, signup, login, navigation }) => {
                   <Text style={styles.text}>Forgot Password?</Text>
                 </Fragment>
               )}
-              <View style={styles.button}>
                 {formState ? (
-                  <Button onPress={handleSubmit} name="Next" color="green" />
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={handleSubmit}
+                  >
+                    <Text style={styles.buttonText}>Next</Text>
+                  </TouchableOpacity>
                 ) : (
-                  <Button onPress={handleSubmit} name="Sign In" color="green" />
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={handleSubmit}
+                  >
+                    <Text style={styles.buttonText}>Sign In</Text>
+                  </TouchableOpacity>
                 )}
               </View>
-            </View>
           )}
         />
       </View>
