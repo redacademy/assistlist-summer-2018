@@ -93,7 +93,7 @@ When your listing ranking drops you can hit refresh in My listings to bump it up
       showSkip={false}
       showNext={false}
       onDone={() => {
-        navigation.goBack();
+        navigation.navigate('Listings');
       }}
       imageContainerStyles={styles.ImageContainer}
       DotComponent={Circle}

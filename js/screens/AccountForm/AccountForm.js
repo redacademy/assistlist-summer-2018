@@ -5,7 +5,7 @@ import AccountInput from '../../components/AccountInput';
 import styles from './styles';
 import { validateLogin, validateSignup } from './helpers/validation';
 import LoadingIndicator from '../../components/LoadingIndicator';
-import { addUser, removeUser } from '../../config/models';
+import { addUser } from '../../config/models';
 
 const AccountForm = ({ formState, toggleForm, signup, login, navigation }) => {
   return (
@@ -22,13 +22,13 @@ const AccountForm = ({ formState, toggleForm, signup, login, navigation }) => {
               ? values => {
                   signup
                     .mutation({ variables: { ...values } })
-                    .then(res =>
+                    .then(res => {
                       addUser(
-                        res.data.authenticateUser.id,
-                        res.data.authenticateUser.token
-                      )
+                        res.data.signupUser.id,
+                        res.data.signupUser.token
+                      )}
                     )
-                    .then(() => navigation.navigate('Listings'))
+                    .then(() => navigation.navigate('OnBoarding'))
                     .catch(err => err);
                 }
               : values => {

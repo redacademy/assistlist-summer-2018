@@ -1,6 +1,5 @@
-import { createStackNavigator, createSwitchNavigator } from 'react-navigation';
+import { createSwitchNavigator } from 'react-navigation';
 import NavigationLayout, { authStack } from './NavigationLayout';
-import OnBoarding from '../screens/OnBoarding';
 
 const createRootNavigator = signedIn =>
   createSwitchNavigator(
