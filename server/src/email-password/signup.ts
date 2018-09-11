@@ -9,6 +9,7 @@ interface User {
 
 interface EventData {
   email: string
+  username: string
   password: string
 }
 
@@ -21,7 +22,7 @@ export default async (event: FunctionEvent<EventData>) => {
     const graphcool = fromEvent(event)
     const api = graphcool.api('simple/v1')
 
-    const { email, password } = event.data
+    const { email, username, password } = event.data
 
     if (!validator.isEmail(email)) {
       return { error: 'Not a valid email' }
@@ -39,7 +40,7 @@ export default async (event: FunctionEvent<EventData>) => {
     const hash = await bcrypt.hash(password, salt)
 
     // create new user
-    const userId = await createGraphcoolUser(api, email, hash)
+    const userId = await createGraphcoolUser(api, email, username, hash)
 
     // generate node token for new User node
     const token = await graphcool.generateNodeToken(userId, 'User')
@@ -67,11 +68,12 @@ async function getUser(api: GraphQLClient, email: string): Promise<{ User }> {
   return api.request<{ User }>(query, variables)
 }
 
-async function createGraphcoolUser(api: GraphQLClient, email: string, password: string): Promise<string> {
+async function createGraphcoolUser(api: GraphQLClient, email: string, username: string, password: string): Promise<string> {
   const mutation = `
-    mutation createGraphcoolUser($email: String!, $password: String!) {
+    mutation createGraphcoolUser($email: String!, $username: String!, $password: String!) {
       createUser(
         email: $email,
+        username: $username
         password: $password
       ) {
         id
@@ -81,6 +83,7 @@ async function createGraphcoolUser(api: GraphQLClient, email: string, password: 
 
   const variables = {
     email,
+    username,
     password: password,
   }
 

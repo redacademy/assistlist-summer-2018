@@ -9,7 +9,18 @@ import CreateItem from './../screens/CreateItem';
 import Listings from './../screens/Listings';
 import Messages from './../screens/Messages';
 import Profile from './../screens/Profile';
+import AccountForm from '../screens/AccountForm';
 
+export const authStack = createStackNavigator(
+  {
+    accountForm: {
+      screen: AccountForm,
+    },
+  },
+  {
+    headerMode: 'none',
+  }
+);
 const aboutStack = createStackNavigator({
   About: {
     screen: About,

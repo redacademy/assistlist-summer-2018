@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { fonts } from '../../config/styles'  
+import { fonts, colors } from '../../config/styles'  
 
 const {height, width} = Dimensions.get('window');
 
@@ -9,26 +9,25 @@ const styles = StyleSheet.create({
     height: height,
     width: width,
     alignItems: 'center',
-    justifyContent: 'flex-start'
+    justifyContent: 'center',
   },
   logo: {
-    width: 276,
-    height: 171,
-    marginTop: 84,
-    marginBottom: 60,
+    flex: 0.55,
+    resizeMode: 'contain',
+    marginBottom: 20
   },
   text: {
     fontFamily: fonts.main,
-    color: '#0082B5',
+    color: colors.darkBlue,
     fontSize: 16,
+    marginTop: 5,
     textAlign: 'center',
   },
   link: {
-    fontWeight: 'bold',
+    fontWeight: '700',
     textDecorationLine: 'underline'
   },
   actions: {
-    marginLeft: -5,
     flexDirection: 'row',
   },
   footer: {
@@ -36,7 +35,24 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 20,
-  }
+    paddingVertical: 5,
+    borderRadius: 7,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.green,
+  },
+  buttonText: {
+    fontFamily: fonts.main,
+    color: 'white',
+    fontSize: 25,
+  },
+  error: {
+    fontFamily: fonts.main,
+    color: colors.red,
+  },
+  form: {
+    marginTop: 30,
+  },
 });
 
 export default styles;
