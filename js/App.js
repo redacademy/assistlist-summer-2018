@@ -19,7 +19,7 @@ export default class App extends Component {
     getUser().map(user => currentUser = user);
     if(currentUser) this.setState({signedIn: true});
   }
-  
+
   render() {
     const Layout = createRootNavigator(this.state.signedIn)
     return (

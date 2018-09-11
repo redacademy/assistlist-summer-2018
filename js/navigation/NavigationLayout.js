@@ -14,6 +14,8 @@ import MyListings from './../screens/MyListings';
 import Notifications from './../screens/Notifications';
 import AccountForm from '../screens/AccountForm';
 import OnBoarding from '../screens/OnBoarding';
+import CommunityPartners from './../screens/CommunityPartners';
+import AboutUs from './../screens/AboutUs';
 
 export const authStack = createStackNavigator(
   {
@@ -31,6 +33,12 @@ export const authStack = createStackNavigator(
 const aboutStack = createStackNavigator({
   About: {
     screen: About,
+  },
+  AboutUs: {
+    screen: AboutUs,
+  },
+  CommunityPartners: {
+    screen: CommunityPartners,
   },
 });
 const createItemStack = createStackNavigator({
