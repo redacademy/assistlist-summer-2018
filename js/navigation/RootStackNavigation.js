@@ -1,9 +1,10 @@
 import { createStackNavigator } from 'react-navigation';
 
-import NavigationLayout from './NavigationLayout';
+import NavigationLayout, { authStack } from './NavigationLayout';
 
 export default createStackNavigator(
   {
+    authStack,
     NavigationLayout,
   },
   {

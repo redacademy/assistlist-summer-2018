@@ -12,7 +12,18 @@ import Profile from './../screens/Profile';
 import EditProfile from './../screens/EditProfile';
 import MyListings from './../screens/MyListings';
 import Notifications from './../screens/Notifications';
+import AccountForm from '../screens/AccountForm';
 
+export const authStack = createStackNavigator(
+  {
+    accountForm: {
+      screen: AccountForm,
+    },
+  },
+  {
+    headerMode: 'none',
+  }
+);
 const aboutStack = createStackNavigator({
   About: {
     screen: About,

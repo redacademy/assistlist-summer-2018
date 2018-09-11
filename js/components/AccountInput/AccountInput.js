@@ -2,12 +2,15 @@ import React from 'react';
 import { TextInput } from 'react-native';
 import styles from './styles';
 
-export const AccountInput = ({ input, placeholder, password }) => {
+export const AccountInput = ({ input, placeholder, password, invalid }) => {
   return (
     <TextInput
-      style={styles.input}
+      autoCapitalize="none"
+      style={
+        invalid ? [styles.input, styles.invalid] : [styles.input, styles.valid]
+      }
       placeholder={placeholder}
-      placeholderTextColor="#0082B580"
+      placeholderTextColor={invalid ? '#d84934' : '#0082B580'}
       {...input}
       secureTextEntry={password}
     />
