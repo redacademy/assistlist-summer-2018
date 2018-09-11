@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
-import { colors } from '../../config/styles';
+import { removeUser } from '../../config/models';
 import styles from './styles';
 
 const Profile = ({ navigation }) => {
@@ -45,7 +44,12 @@ const Profile = ({ navigation }) => {
             <Text style={styles.gridText}>Edit Account Info</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => console.log('Logout')}>
+        <TouchableOpacity
+          onPress={() => {
+            removeUser();
+            navigation.navigate('SignedOut');
+          }}
+        >
           <View style={styles.gridItem}>
             <Image
               style={styles.icon}
