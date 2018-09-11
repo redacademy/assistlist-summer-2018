@@ -15,9 +15,9 @@ export default class App extends Component {
 
   componentDidMount() {
     SplashScreen.hide()
-    const currentUser = []
-    getUser().map(user => currentUser.push(user))
-    if(currentUser.length > 0) this.setState({signedIn: true})
+    let currentUser = false
+    getUser().map(user => currentUser = user);
+    if(currentUser) this.setState({signedIn: true});
   }
 
   render() {
