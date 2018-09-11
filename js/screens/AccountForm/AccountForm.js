@@ -5,6 +5,7 @@ import AccountInput from '../../components/AccountInput';
 import styles from './styles';
 import { validateLogin, validateSignup } from './helpers/validation';
 import LoadingIndicator from '../../components/LoadingIndicator';
+import { addUser } from '../../config/models';
 
 const AccountForm = ({ formState, toggleForm, signup, login, navigation }) => {
   return (
@@ -22,17 +23,23 @@ const AccountForm = ({ formState, toggleForm, signup, login, navigation }) => {
                   signup
                     .mutation({ variables: { ...values } })
                     .then(res => {
-                      console.log(res);
-                    })
-                    .then(() => navigation.navigate('Listings'))
+                      addUser(
+                        res.data.signupUser.id,
+                        res.data.signupUser.token
+                      )}
+                    )
+                    .then(() => navigation.navigate('OnBoarding'))
                     .catch(err => err);
                 }
               : values => {
                   login
                     .mutation({ variables: { ...values } })
-                    .then(res => {
-                      console.log(res);
-                    })
+                    .then(res =>
+                      addUser(
+                        res.data.authenticateUser.id,
+                        res.data.authenticateUser.token
+                      )
+                    )
                     .then(() => navigation.navigate('Listings'))
                     .catch(err => err);
                 }
@@ -114,22 +121,16 @@ const AccountForm = ({ formState, toggleForm, signup, login, navigation }) => {
                   <Text style={styles.text}>Forgot Password?</Text>
                 </Fragment>
               )}
-                {formState ? (
-                  <TouchableOpacity
-                    style={styles.button}
-                    onPress={handleSubmit}
-                  >
-                    <Text style={styles.buttonText}>Next</Text>
-                  </TouchableOpacity>
-                ) : (
-                  <TouchableOpacity
-                    style={styles.button}
-                    onPress={handleSubmit}
-                  >
-                    <Text style={styles.buttonText}>Sign In</Text>
-                  </TouchableOpacity>
-                )}
-              </View>
+              {formState ? (
+                <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+                  <Text style={styles.buttonText}>Next</Text>
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+                  <Text style={styles.buttonText}>Sign In</Text>
+                </TouchableOpacity>
+              )}
+            </View>
           )}
         />
       </View>

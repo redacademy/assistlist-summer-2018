@@ -1,17 +1,19 @@
-import { createStackNavigator } from 'react-navigation';
+import { createSwitchNavigator } from 'react-navigation';
 import NavigationLayout, { authStack } from './NavigationLayout';
-import OnBoarding from '../screens/OnBoarding';
 
-export default createStackNavigator(
-  {
-    authStack,
-    NavigationLayout,
-    OnBoarding: {
-      screen: OnBoarding,
+const createRootNavigator = signedIn =>
+  createSwitchNavigator(
+    {
+      SignedOut: {
+        screen: authStack,
+      },
+      SignedIn: {
+        screen: NavigationLayout,
+      },
     },
-  },
-  {
-    headerMode: 'none',
-    mode: 'modal',
-  }
-);
+    {
+      initialRouteName: signedIn ? 'SignedIn' : 'SignedOut',
+    }
+  );
+
+export default createRootNavigator;
