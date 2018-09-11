@@ -6,6 +6,6 @@ export default class AboutContainer extends Component {
     title: 'About',
   };
   render() {
-    return <About />;
+    return <About navigation={this.props.navigation} />;
   }
 }
