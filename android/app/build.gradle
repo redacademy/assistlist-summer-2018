@@ -137,11 +137,8 @@ android {
 }
 
 dependencies {
-<<<<<<< HEAD
     compile project(':realm')
-=======
     compile project(':react-native-blur')
->>>>>>> convert popup into modal and restyle
     compile project(':react-native-splash-screen')
     compile project(':react-native-vector-icons')
     compile fileTree(dir: "libs", include: ["*.jar"])
