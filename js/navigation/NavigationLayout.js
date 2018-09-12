@@ -12,11 +12,13 @@ import Profile from './../screens/Profile';
 import EditProfile from './../screens/EditProfile';
 import MyListings from './../screens/MyListings';
 import Notifications from './../screens/Notifications';
-import AccountForm from '../screens/AccountForm';
-import OnBoarding from '../screens/OnBoarding';
+import AccountForm from './../screens/AccountForm';
+import OnBoarding from './../screens/OnBoarding';
 import CommunityPartners from './../screens/CommunityPartners';
 import AboutUs from './../screens/AboutUs';
 import CreateItemNav from '../components/CreateItemNav/CreateItemNav';
+import SingleListing from './../screens/SingleListing';
+import Chat from './../screens/Chat';
 
 export const authStack = createStackNavigator(
   {
@@ -51,12 +53,20 @@ const listingsStack = createStackNavigator({
   Listings: {
     screen: Listings,
   },
-});
-const messagesStack = createStackNavigator({
-  Messages: {
-    screen: Messages,
+  SingleListing: {
+    screen: SingleListing,
   },
 });
+const messagesStack = createStackNavigator(
+  {
+    Messages: {
+      screen: Messages,
+    },
+    Chat: {
+      screen: Chat,
+    },
+  },
+);
 const profileStack = createStackNavigator({
   Profile: {
     screen: Profile,
@@ -150,6 +160,7 @@ export default createBottomTabNavigator(
           </View>
         );
       },
+      tabBarVisible: navigation.state.routes[navigation.state.index].routeName !== 'Chat'
     }),
     tabBarOptions: {
       showLabel: false,

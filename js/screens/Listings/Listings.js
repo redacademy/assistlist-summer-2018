@@ -1,10 +1,9 @@
 import React from 'react';
-import { Text, View, TextInput, Image, TouchableOpacity } from 'react-native';
+import { View, TextInput, Image, TouchableOpacity } from 'react-native';
 import ItemList from '../../components/ItemsList';
 import styles from './styles';
-import { colors } from '../../config/styles';
 
-const Listings = ({ data }) => {
+const Listings = ({ data, navigation }) => {
   return (
     <View styles={styles.container}>
       <View style={styles.searchContainer}>
@@ -25,7 +24,7 @@ const Listings = ({ data }) => {
           />
         </TouchableOpacity>
       </View>
-      <ItemList data={data} />
+      <ItemList data={data} navigation={navigation}/>
     </View>
   );
 };

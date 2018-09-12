@@ -10,28 +10,22 @@ type User @model {
   email: String! @isUnique
   password: String!
   chats: [Chat!]! @relation(name: "UserChats")
-  profilePic: Image @relation(name: "UserImage")
+  profilePic: String
 }
 
 type Item @model {
   id: ID! @isUnique
   title: String!
+  description: String
   price: Int
   createdAt: DateTime!
   updatedAt: DateTime!
   subCategory: SubCategory! @relation(name: "ItemCategory")
   location: Location! @relation(name: "ItemLocation")
   user: User! @relation(name: "UserItems")
-  images: [Image!]! @relation(name: "ItemImages")
+  images: [String!]!
   postStatus: DateTime
-}
-
-type Image @model {
-  id: ID! @isUnique
-  data: String!
-  imageUser: User @relation(name: "UserImage")
-  imageItem: Item @relation(name: "ItemImages")
-  ownerType: OwnerType!
+  chats: [Chat!]! @relation(name: "ItemChats")
 }
 
 enum OwnerType {
@@ -60,7 +54,7 @@ type Location @model {
 
 type Chat @model {
   id: ID! @isUnique
-  item: String!
+  item: Item! @relation(name: "ItemChats")
   participants: [User!]! @relation(name: "UserChats")
   messages: [Message!]! @relation(name: "ChatMessages")
 }

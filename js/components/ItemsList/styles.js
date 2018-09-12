@@ -11,15 +11,19 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.darkBlue,
     borderBottomWidth: 0.5,
     flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
     paddingVertical: 10,
+    maxHeight: height / 5,
   },
   listImage: {
-    width: width / 5,
-    height: width / 5,
-    marginLeft: width / 10,
+    resizeMode: 'contain',
+    alignSelf: 'stretch',
+    flex: 0.35,
+    marginLeft: width / 12,
   },
   listText: {
+    flex: 1,
     marginLeft: width / 7,
   },
   listTitle: {
@@ -45,7 +49,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: fonts.main,
   },
-
   listLocationIcon: {
     height: 15,
     width: 10,

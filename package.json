@@ -8,13 +8,19 @@
   },
   "dependencies": {
     "apollo-boost": "^0.1.15",
+    "apollo-cache-inmemory": "^1.2.10",
+    "apollo-client": "^2.4.2",
+    "apollo-link": "^1.2.2",
+    "apollo-link-error": "^1.1.0",
+    "apollo-link-http": "^1.5.4",
+    "apollo-link-ws": "^1.0.8",
     "final-form": "^4.10.0",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.9.2",
     "moment": "^2.22.2",
     "react": "16.4.1",
     "react-adopt": "^0.6.0",
-    "react-apollo": "^2.1.11",
+    "react-apollo": "apollographql/react-apollo",
     "react-final-form": "^3.6.5",
     "react-native": "0.56.0",
     "react-native-app-intro": "^1.1.5",
@@ -24,7 +30,8 @@
     "react-native-splash-screen": "3.0.6",
     "react-native-vector-icons": "^5.0.0",
     "react-navigation": "^2.12.1",
-    "realm": "^2.15.3"
+    "realm": "^2.15.3",
+    "subscriptions-transport-ws": "^0.9.14"
   },
   "devDependencies": {
     "babel-jest": "23.4.2",
