@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     bottom: 30,
     width: width / 1.3,
-    marginLeft: width / 25,
-    marginRight: width / 25,
+    marginLeft: width / 15,
+    marginRight: width / 15,
   },
   option: {
     borderColor: colors.darkBlue,
