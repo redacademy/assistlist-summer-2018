@@ -16,6 +16,7 @@ import AccountForm from '../screens/AccountForm';
 import OnBoarding from '../screens/OnBoarding';
 import CommunityPartners from './../screens/CommunityPartners';
 import AboutUs from './../screens/AboutUs';
+import CreateItemNav from '../components/CreateItemNav/CreateItemNav';
 
 export const authStack = createStackNavigator(
   {
@@ -49,7 +50,7 @@ const createItemStack = createStackNavigator({
 const listingsStack = createStackNavigator({
   Listings: {
     screen: Listings,
-  },      
+  },
 });
 const messagesStack = createStackNavigator({
   Messages: {
@@ -118,13 +119,7 @@ export default createBottomTabNavigator(
           };
         }
         if (routeName === 'CreateItem') {
-          sourceFile = require('../assets/images/Footer/Green-Add.png');
-          styleImage = { height: 45, width: 45 };
-          styleView = {
-            borderRightColor: '#0082B5',
-            padding: 7,
-            marginBottom: 10,
-          };
+          return <CreateItemNav />;
         }
         if (routeName === 'Profile') {
           if (focused === false) {
