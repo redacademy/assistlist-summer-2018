@@ -16,3 +16,24 @@ export const AUTH_USER = gql`
     }
   }
 `;
+
+export const GET_ITEMS = gql`
+  {
+    allItems {
+      title
+      id
+      createdAt
+      price
+      location {
+        title
+      }
+      category {
+        title
+      }
+      user {
+        id
+        username
+      }
+    }
+  }
+`;
