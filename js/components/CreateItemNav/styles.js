@@ -17,8 +17,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     justifyContent: 'center',
     bottom: 30,
-    width: width / 1.1,
-    margin: 'auto',
+    width: width / 1.3,
+    marginLeft: width / 25,
+    marginRight: width / 25,
   },
   option: {
     borderColor: colors.darkBlue,
@@ -29,8 +30,9 @@ const styles = StyleSheet.create({
     fontFamily: fonts.main,
     fontWeight: 'bold',
     fontSize: 18,
-    padding: 5,
-    textAlign: 'center',
+    paddingLeft: width / 13,
+    padding: height / 70,
+    textAlign: 'left',
   },
 });
 
