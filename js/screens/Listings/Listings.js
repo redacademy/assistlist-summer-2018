@@ -5,7 +5,6 @@ import styles from './styles';
 import { colors } from '../../config/styles';
 
 const Listings = ({ data }) => {
-  console.log(data);
   return (
     <View styles={styles.container}>
       <View style={styles.searchContainer}>

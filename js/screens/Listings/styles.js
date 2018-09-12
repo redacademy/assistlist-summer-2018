@@ -4,7 +4,6 @@ const { height, width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
-    height: height,
     backgroundColor: 'white',
   },
   searchContainer: {
@@ -15,7 +14,7 @@ const styles = StyleSheet.create({
   searchInput: {
     position: 'relative',
     borderColor: 'blue',
-    borderRadius: 10,
+    borderRadius: 5,
     borderWidth: 0.5,
     borderColor: colors.darkBlue,
     fontFamily: fonts.main,
@@ -23,20 +22,22 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginHorizontal: 10,
     paddingHorizontal: width / 8,
-    paddingVertical: 8,
+    paddingVertical: 5,
     width: width / 1.3,
   },
   searchIcon: {
     position: 'absolute',
-    top: 11,
+    justifyContent: 'flex-end',
+    alignSelf: 'flex-end',
     left: 20,
-    height: 20,
-    width: 20,
+    height: height / 20,
+    width: width / 18,
+    resizeMode: 'contain',
   },
   filterIcon: {
-    height: width / 11,
-    width: width / 11,
-    marginLeft: 5,
+    height: width / 15,
+    width: width / 10,
+    marginLeft: 6,
   },
 });
 
