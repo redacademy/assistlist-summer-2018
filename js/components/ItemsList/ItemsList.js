@@ -42,7 +42,7 @@ export const ItemsList = ({ data }) => {
                 <Text style={styles.listTitle}>
                   {capitalizeFirstLetter(item.title)}
                 </Text>
-                <Text style={styles.listTitle}>{item.category.title}</Text>
+                {/* <Text style={styles.listTitle}>{item.subCategory.title}</Text> */}
                 <Text style={styles.listPrice}>${item.price}</Text>
                 <View style={styles.locationContainer}>
                   <Image

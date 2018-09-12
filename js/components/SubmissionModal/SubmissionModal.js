@@ -4,7 +4,7 @@ import { Text, TouchableOpacity, Image, View } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import styles from './styles';
 
-class RegisterModal extends React.Component {
+class SubmissionModal extends React.Component {
   state = { modalVisible: false };
   showOverlay() {
     this.setState({ modalVisible: true });
@@ -18,27 +18,31 @@ class RegisterModal extends React.Component {
     return (
       <View>
         <TouchableOpacity onPress={this.showOverlay.bind(this)}>
-          <Text>Must register before continuing</Text>
+          <Image
+            style={styles.icon}
+            source={require('../../assets/images/Icons/Back.png')}
+          />
         </TouchableOpacity>
         <Modal style={styles.body} visible={this.state.modalVisible}>
           <View style={styles.container}>
             <Text style={styles.Text}>
-              In order to progress you must register for an account.
+              Are you sure you want to proceed without saving?
             </Text>
             <View style={styles.buttonContainer}>
               <TouchableOpacity
                 onPress={() => {
-                  this.props.navigation.navigate('AccountForm');
+                  this.props.navigation.navigate('Listings') &&
+                    this.setState({ modalVisible: false });
                 }}
-                style={styles.register}
+                style={styles.yes}
               >
-                <Text style={styles.registerText}>Register</Text>
+                <Text style={styles.yesText}>Yes</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => this.setState({ modalVisible: false })}
-                style={styles.cancel}
+                style={styles.no}
               >
-                <Text style={styles.cancelText}>Cancel</Text>
+                <Text style={styles.noText}>No</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -48,4 +52,4 @@ class RegisterModal extends React.Component {
   }
 }
 
-export default withNavigation(RegisterModal);
+export default withNavigation(SubmissionModal);

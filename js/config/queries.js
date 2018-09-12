@@ -27,7 +27,7 @@ export const GET_ITEMS = gql`
       location {
         title
       }
-      category {
+      subCategory {
         title
       }
       user {

@@ -1,3 +1,3 @@
-import MyListings from './MyListings';
+import MyListings from './MyListingsContainer';
 
 export default MyListings;

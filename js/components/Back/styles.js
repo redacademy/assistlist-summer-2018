@@ -4,9 +4,10 @@ import { fonts, colors } from '../../config/styles';
 const { height, width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
-    height: height,
+  icon: {
+    width: width / 20,
+    height: height / 20,
+    margin: 10,
   },
 });
 
