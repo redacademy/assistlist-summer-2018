@@ -18,11 +18,11 @@ const capitalizeFirstLetter = str => {
     .join(' ');
 };
 
-export const ItemsList = ({ data }) => {
+export const ItemsList = ({ data, searchMethods }) => {
   return (
     <ScrollView style={styles.container}>
       <FlatList
-        data={data.allItems}
+        data={data}
         keyExtractor={item => '' + item.id}
         renderItem={({ item }) => (
           <TouchableOpacity

@@ -3,8 +3,10 @@ import { Text, View, TextInput, Image, TouchableOpacity } from 'react-native';
 import ItemList from '../../components/ItemsList';
 import styles from './styles';
 import { colors } from '../../config/styles';
+import { ItemSearchContext } from '../../context/ItemsProvider';
 
-const Listings = ({ data }) => {
+const Listings = ({ data, searchMethods }) => {
+  console.log(data, '<><><><><><');
   return (
     <View styles={styles.container}>
       <View style={styles.searchContainer}>
@@ -14,7 +16,7 @@ const Listings = ({ data }) => {
         />
         <TextInput
           style={styles.searchInput}
-          onChangeText={text => console.log(text)}
+          onChangeText={text => searchMethods.filterByTitle(text)}
           placeholder={'Enter a Keyword or Location'}
           placeholderTextColor="#0082B566"
         />

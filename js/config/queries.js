@@ -18,8 +18,8 @@ export const AUTH_USER = gql`
 `;
 
 export const GET_ITEMS = gql`
-  {
-    allItems {
+  query($filter: ItemFilter) {
+    allItems(filter: $filter) {
       title
       id
       createdAt
@@ -33,6 +33,9 @@ export const GET_ITEMS = gql`
       user {
         id
         username
+      }
+      images {
+        data
       }
     }
   }
