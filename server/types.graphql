@@ -9,6 +9,8 @@ type User @model {
   username: String!
   email: String! @isUnique
   password: String!
+  chats: [Chat!]! @relation(name: "UserChats")
+  profilePic: Image @relation(name: "UserImage")
 }
 
 type Item @model {
@@ -17,22 +19,37 @@ type Item @model {
   price: Int
   createdAt: DateTime!
   updatedAt: DateTime!
-  category: Category! @relation(name: "ItemCategory")
+  subCategory: SubCategory! @relation(name: "ItemCategory")
   location: Location! @relation(name: "ItemLocation")
   user: User! @relation(name: "UserItems")
+  images: [Image!]! @relation(name: "ItemImages")
+  postStatus: DateTime
+}
+
+type Image @model {
+  id: ID! @isUnique
+  data: String!
+  imageUser: User @relation(name: "UserImage")
+  imageItem: Item @relation(name: "ItemImages")
+  ownerType: OwnerType!
+}
+
+enum OwnerType {
+  User
+  Item
 }
 
 type Category @model {
   id: ID! @isUnique
   title: String!
   subs: [SubCategory!]! @relation(name: "ItemSubCategory")
-  items: [Item!]! @relation(name: "ItemCategory")
 }
 
 type SubCategory @model {
   id: ID! @isUnique
   title: String!
   category: Category! @relation(name: "ItemSubCategory")
+  items: [Item!]! @relation(name: "ItemCategory")
 }
 
 type Location @model {
@@ -41,6 +58,20 @@ type Location @model {
   item: [Item!]! @relation(name: "ItemLocation")
 }
 
+type Chat @model {
+  id: ID! @isUnique
+  item: String!
+  participants: [User!]! @relation(name: "UserChats")
+  messages: [Message!]! @relation(name: "ChatMessages")
+}
+
+type Message @model {
+  id: ID! @isUnique
+  from: String!
+  content: String!
+  createdAt: DateTime!
+  chat: Chat @relation(name: "ChatMessages")
+}
 # added by email-password template: (please uncomment)
 
 # added by google template: (please uncomment)
