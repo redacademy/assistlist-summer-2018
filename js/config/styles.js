@@ -5,6 +5,7 @@ export const colors = {
   black: '#333333',
   grey: '#B1B1B1',
   red: '#D84934',
+  yellow: '#F6EE00',
 };
 
 export const fonts = { main: 'SF Pro Display', nunito: 'Nunito' };
