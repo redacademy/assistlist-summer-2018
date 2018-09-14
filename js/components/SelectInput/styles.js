@@ -1,9 +1,10 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import { fonts, colors } from '../../config/styles';
+const { height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   modalViewBottom: {
-    height: 215,
+    height: height/3,
     justifyContent: 'center',
     backgroundColor: '#D0D4DB',
   },
@@ -30,8 +31,6 @@ const styles = StyleSheet.create({
     borderBottomColor: 'transparent',
     borderLeftWidth: 11.5,
     borderLeftColor: colors.darkBlue,
-    width: 0,
-    height: 0,
     top: 13,
     right: 16,
   },
