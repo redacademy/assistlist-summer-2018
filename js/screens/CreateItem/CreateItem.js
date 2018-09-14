@@ -57,12 +57,13 @@ class CreateItem extends Component {
                   </Fragment>
                 )}
               />
-              <View style={styles.priceContainer}>
+
+              <Text style={styles.title}>Price *</Text>
+              <View style={styles.priceForm}>
                 <Field
                   name="price"
                   render={({ input, meta }) => (
-                    <View>
-                      <Text style={styles.title}>Price *</Text>
+                    <View style={styles.priceContainer}>
                       <View style={styles.inputPrice}>
                         <Text style={styles.dollarSign}>$</Text>
                         <TextInput

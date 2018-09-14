@@ -43,35 +43,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     color: 'black',
   },
-  inputPrice: {
-    fontSize: 16,
-    paddingTop: 8,
-    paddingHorizontal: 10,
-    paddingBottom: 8,
-    borderWidth: 1,
-    borderColor: colors.darkBlue,
-    borderRadius: 4,
-    backgroundColor: 'white',
-    color: 'black',
-    width: width / 2.5,
-    flexDirection: 'row',
-  },
-  priceContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
-  },
-  freeContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
-    marginTop: 18,
-    paddingTop: 18,
-  },
   TextFree: {
-    marginRight: 10,
-    marginTop: 5,
     fontSize: 18,
+    margin: 5,
+    paddingRight: 5,
   },
   confirmButton: {
     alignItems: 'center',
@@ -82,7 +57,7 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     alignItems: 'center',
     backgroundColor: colors.green,
-    width: width/1.5,
+    width: width / 1.5,
   },
   buttonText: {
     fontFamily: fonts.main,
@@ -93,15 +68,34 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingBottom: 15,
   },
-  dollarSign: {
-    fontSize: 16,
-    marginRight: 20,
+  priceForm: {
+    flexDirection: 'row',
   },
-  dollarText: {
-    marginRight: 3,
-    paddingLeft: 5,
-    width:  width / 5,
-  }
+  priceContainer: {
+    justifyContent: 'flex-start',
+    flex: 0.7,
+  },
+  inputPrice: {
+    flexDirection: 'row',
+    fontSize: 16,
+    borderWidth: 1,
+    borderColor: colors.darkBlue,
+    borderRadius: 4,
+    backgroundColor: 'white',
+    color: 'black',
+  },
+  freeContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignSelf: 'flex-start',
+    marginTop: 5,
+  },
+  dollarSign: {
+    paddingVertical: 10,
+    fontSize: 18,
+    paddingHorizontal: 5,
+  },
 });
 
 export default styles;

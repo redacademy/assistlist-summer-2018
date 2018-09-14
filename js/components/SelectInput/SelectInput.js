@@ -60,6 +60,7 @@ export default class SelectInput extends Component {
               onValueChange={(itemValue, itemIndex, item) =>
                 this.setState({ value: itemValue })
               }
+              placeholderStyle={{ color: 'white' }}
             >
               {this.renderPickerItems()}
             </Picker>
