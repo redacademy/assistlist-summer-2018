@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { BlurView } from 'react-native-blur';
 import Modal from 'react-native-modal';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import styles from './styles';
+import { withNavigation } from 'react-navigation';
 
-export default class CreateItemNav extends Component {
+class CreateItemNav extends Component {
   state = { modalVisible: false };
 
   showOverlay() {
@@ -30,19 +30,49 @@ export default class CreateItemNav extends Component {
           onBackdropPress={() => this.setState({ modalVisible: false })}
         >
           <View style={styles.container}>
-            <TouchableOpacity style={styles.option}>
+            <TouchableOpacity
+              style={styles.option}
+              onPress={() => {
+                this.setState({ modalVisible: false });
+                this.props.navigation.navigate('CreateItem');
+              }}
+            >
               <Text style={styles.optionText}>Mobility</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.option}>
+            <TouchableOpacity
+              style={styles.option}
+              onPress={() => {
+                this.setState({ modalVisible: false });
+                this.props.navigation.navigate('CreateItem');
+              }}
+            >
               <Text style={styles.optionText}>Bathroom Safety</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.option}>
+            <TouchableOpacity
+              style={styles.option}
+              onPress={() => {
+                this.setState({ modalVisible: false });
+                this.props.navigation.navigate('CreateItem');
+              }}
+            >
               <Text style={styles.optionText}>Living Aids</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.option}>
+            <TouchableOpacity
+              style={styles.option}
+              onPress={() => {
+                this.setState({ modalVisible: false });
+                this.props.navigation.navigate('CreateItem');
+              }}
+            >
               <Text style={styles.optionText}>Transfer Aids</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.optionLast}>
+            <TouchableOpacity
+              style={styles.optionLast}
+              onPress={() => {
+                this.setState({ modalVisible: false });
+                this.props.navigation.navigate('CreateItem');
+              }}
+            >
               <Text style={styles.optionText}>Bedroom Equipments</Text>
             </TouchableOpacity>
           </View>
@@ -51,3 +81,5 @@ export default class CreateItemNav extends Component {
     );
   }
 }
+
+export default withNavigation(CreateItemNav);
