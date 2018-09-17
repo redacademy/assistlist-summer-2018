@@ -1,11 +1,34 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import { fonts, colors } from '../../config/styles';
 const { height, width } = Dimensions.get('window');
+const heightimg = height / 4
+const widthimg = width / 3
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    paddingHorizontal: 10,
+    flex: 1
+  },
+  selectedImage: {
+    width: widthimg,
+    height: heightimg,
+    resizeMode: 'contain',
+    borderWidth: 1,
+    borderColor: colors.darkBlue
+  },
+  defaultImageContainer: {
+    width: width / 3,
+    height: heightimg,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: colors.darkBlue
+  },
+  defaultImage: {
+    height: height / 9,
+    width: width / 6,
+    resizeMode: 'contain'
   },
   message: {
     fontFamily: fonts.main,
