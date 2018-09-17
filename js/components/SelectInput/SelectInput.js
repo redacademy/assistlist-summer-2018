@@ -23,6 +23,7 @@ export default class SelectInput extends Component {
     });
   }
 
+
   render() {
     return (
       <View>
@@ -37,10 +38,10 @@ export default class SelectInput extends Component {
           {this.state.showPicker ? (
             <View style={styles.iconRight} />
           ) : (
-            <View style={styles.iconPlay}>
-              <Icon name="play" size={18} color={styles.iconPlay.color} />
-            </View>
-          )}
+              <View style={styles.iconPlay}>
+                <Icon name="play" size={18} color={styles.iconPlay.color} />
+              </View>
+            )}
         </TouchableOpacity>
         <Modal
           visible={this.state.showPicker}
@@ -58,15 +59,15 @@ export default class SelectInput extends Component {
             <Picker
               selectedValue={this.state.value}
               onValueChange={(itemValue, itemIndex, item) =>
-                this.setState({ value: itemValue })
-              }
+                this.setState({ value: itemValue },
+                  this.props.question == 'location' ? () => this.props.getLocation(this.state.value) : () => this.props.getCategory(this.state.value))}
               placeholderStyle={{ color: 'white' }}
             >
               {this.renderPickerItems()}
             </Picker>
           </View>
         </Modal>
-      </View>
+      </View >
     );
   }
 }

@@ -5,8 +5,50 @@ const { height, width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    paddingHorizontal: 10,
+    flex: 1,
+    padding: 10,
+    width: width,
   },
+
+  imageSelect: {
+    flex: 1,
+    flexDirection: 'row',
+    height: height / 4,
+    justifyContent: 'space-around',
+  },
+
+  option: {
+    width: width * 0.3,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  selectedImage: {
+    width: width * 0.3,
+    height: height / 4,
+    resizeMode: 'contain',
+    borderWidth: 1,
+    borderColor: colors.darkBlue,
+    alignSelf: 'center',
+  },
+  defaultImageContainer: {
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    borderWidth: 1,
+    borderColor: colors.darkBlue,
+    width: '100%',
+    flexDirection: 'row',
+    height: height / 4,
+  },
+
+  defaultImage: {
+    width: width / 8,
+    height: width / 8,
+    resizeMode: 'contain',
+  },
+
   message: {
     fontFamily: fonts.main,
     fontSize: 14,
