@@ -4,7 +4,7 @@ const { height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   modalViewBottom: {
-    height: height/3,
+    height: height / 3,
     justifyContent: 'center',
     backgroundColor: '#D0D4DB',
   },
