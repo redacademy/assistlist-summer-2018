@@ -28,8 +28,9 @@ const Profile = ({ navigation }) => {
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Notifications')}>
           <View style={styles.gridItem}>
-            <Image style={styles.icon} 
-            source={require('../../assets/images/Icons/Notification.png')}
+            <Image
+              style={styles.icon}
+              source={require('../../assets/images/Icons/Notification.png')}
             />
             <Text style={styles.gridText}>Notifications</Text>
           </View>
