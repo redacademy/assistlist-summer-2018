@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     width: width / 8,
     padding: 7,
     marginBottom: 10,
+    overflow: 'visible'
   },
   container: {
     backgroundColor: 'white',

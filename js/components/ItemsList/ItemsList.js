@@ -18,7 +18,7 @@ const capitalizeFirstLetter = str => {
     .join(' ');
 };
 
-export const ItemsList = ({ data }) => {
+export const ItemsList = ({ data, navigation }) => {
   return (
     <ScrollView style={styles.container}>
       <FlatList
@@ -26,10 +26,9 @@ export const ItemsList = ({ data }) => {
         keyExtractor={item => '' + item.id}
         renderItem={({ item }) => (
           <TouchableOpacity
-            onPress={() => console.log('clicked item: ', item.id)}
+            onPress={() => navigation.navigate('SingleListing', { id: item.id })}
           >
             <View style={styles.listItem}>
-              <View>
                 <Image
                   style={styles.listImage}
                   source={{
@@ -37,7 +36,6 @@ export const ItemsList = ({ data }) => {
                       'https://cdn2.iconfinder.com/data/icons/font-awesome/1792/wheelchair-512.png',
                   }}
                 />
-              </View>
               <View style={styles.listText}>
                 <Text style={styles.listTitle}>
                   {capitalizeFirstLetter(item.title)}
