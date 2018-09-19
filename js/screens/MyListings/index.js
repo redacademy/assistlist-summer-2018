@@ -1,3 +1,3 @@
-import MyListings from './MyListings';
+import MyListingsContainer from './MyListingsContainer';
 
-export default MyListings;
+export default MyListingsContainer;

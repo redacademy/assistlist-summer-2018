@@ -1,10 +1,19 @@
 import React from 'react';
-import { Text, View, TextInput, Image, TouchableOpacity } from 'react-native';
+import {
+  Text,
+  View,
+  TextInput,
+  Image,
+  TouchableOpacity,
+  Picker,
+} from 'react-native';
 import ItemList from '../../components/ItemsList';
 import styles from './styles';
 import { colors } from '../../config/styles';
+import { ItemSearchContext } from '../../context/ItemsProvider';
+import PropTypes from 'prop-types';
 
-const Listings = ({ data }) => {
+const Listings = ({ data, searchMethods, sortPriceState, toggleSort }) => {
   return (
     <View styles={styles.container}>
       <View style={styles.searchContainer}>
@@ -14,11 +23,15 @@ const Listings = ({ data }) => {
         />
         <TextInput
           style={styles.searchInput}
-          onChangeText={text => console.log(text)}
+          onChangeText={text => searchMethods.filterByTitle(text)}
           placeholder={'Enter a Keyword or Location'}
           placeholderTextColor="#0082B566"
         />
-        <TouchableOpacity onPress={() => console.log('clicked filter')}>
+        <TouchableOpacity
+          onPress={() => {
+            toggleSort(searchMethods.filterByPrice);
+          }}
+        >
           <Image
             style={styles.filterIcon}
             source={require('../../assets/images/Icons/Filter.png')}
@@ -29,4 +42,12 @@ const Listings = ({ data }) => {
     </View>
   );
 };
+
+Listings.propTypes = {
+  data: PropTypes.array.isRequired,
+  searchMethods: PropTypes.object.isRequired,
+  sortPriceState: PropTypes.bool.isRequired,
+  toggleSort: PropTypes.func.isRequired,
+};
+
 export default Listings;

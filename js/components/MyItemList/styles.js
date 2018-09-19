@@ -4,26 +4,26 @@ const { height, width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
+    height: height,
     backgroundColor: 'white',
-    flexGrow: 0.93,
-    width: width,
   },
   listItem: {
     borderBottomColor: colors.darkBlue,
-    flexDirection: 'row',
     borderBottomWidth: 0.5,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 10,
-    paddingHorizontal: width / 12,
+    maxHeight: height / 4,
   },
   listImage: {
     resizeMode: 'contain',
     alignSelf: 'stretch',
     flex: 0.35,
-    marginRight: width / 12,
+    marginLeft: width / 12,
   },
   listText: {
-    marginLeft: 10,
+    marginLeft: width / 7,
     flex: 1,
   },
   listTitle: {
@@ -31,7 +31,16 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '700',
     color: '#515151',
-    flexWrap: 'wrap',
+    marginRight: 5,
+  },
+  fresh: {
+    backgroundColor: colors.green,
+  },
+  medium: {
+    backgroundColor: colors.yellow,
+  },
+  stale: {
+    backgroundColor: colors.red,
   },
   listPrice: {
     marginTop: 7,
@@ -48,21 +57,50 @@ const styles = StyleSheet.create({
     fontFamily: fonts.main,
   },
   locationContainer: {
-    marginTop: 10,
     flexDirection: 'row',
     alignItems: 'center',
+    marginTop: 13,
   },
-
   listLocationText: {
     color: colors.grey,
     fontSize: 16,
     fontFamily: fonts.main,
   },
+
   listLocationIcon: {
     height: 15,
     width: 10,
     marginRight: 5,
     overflow: 'visible',
+  },
+  timeContainer: {
+    borderBottomColor: colors.darkBlue,
+    borderBottomWidth: 0.5,
+    paddingVertical: 5,
+  },
+  timeText: {
+    textAlign: 'center',
+    fontFamily: fonts.main,
+    fontSize: 12,
+    color: colors.grey,
+  },
+  statusIcon: {
+    marginLeft: 5,
+    height: 20,
+    width: 20,
+    borderRadius: 10,
+  },
+  freshIcon: {
+    backgroundColor: colors.green,
+    marginLeft: 5,
+    height: 20,
+    width: 20,
+    borderRadius: 10,
+  },
+  refreshIcon: {
+    height: 20,
+    width: 20,
+    marginLeft: width / 10,
   },
 });
 
