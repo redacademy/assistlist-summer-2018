@@ -13,12 +13,13 @@ export default class ItemsProvider extends Component {
   }
 
   componentDidMount = async () => {
+    await getUser().map(user => this.setState({ currentUser: user.id }));
     const data = await this.props.client.query({
       query: GET_ITEMS,
       variables: {
         filter: {
           user: {
-            id_not: '',
+            id_not: this.state.currentUser,
           },
         },
       },
@@ -48,7 +49,7 @@ export default class ItemsProvider extends Component {
           filter: {
             title_contains: searchText,
             user: {
-              id_not: '',
+              id_not: this.state.currentUser,
             },
           },
         },
@@ -59,7 +60,7 @@ export default class ItemsProvider extends Component {
         variables: {
           filter: {
             user: {
-              id_not: '',
+              id_not: this.state.currentUser,
             },
             location: {
               title_contains: searchText,
@@ -72,7 +73,7 @@ export default class ItemsProvider extends Component {
         variables: {
           filter: {
             user: {
-              id_not: '',
+              id_not: this.state.currentUser,
             },
             subCategory: {
               title_contains: searchText,
@@ -110,8 +111,6 @@ export default class ItemsProvider extends Component {
       this.setState({ items });
     }
   };
-
-  // updatePostStatus = async () => {};
 
   render() {
     return (

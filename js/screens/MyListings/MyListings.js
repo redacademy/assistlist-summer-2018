@@ -30,7 +30,13 @@ const MyListings = ({ data, updateItem }) => {
           <Text style={styles.days}>0 - 7 Days</Text>
         </View>
       </View>
-      <MyItemList data={data} updateItem={updateItem} />
+      {data.length > 0 ? (
+        <MyItemList data={data} updateItem={updateItem} />
+      ) : (
+        <View style={styles.noItems}>
+          <Text style={styles.noItemsText}>You have no listings</Text>
+        </View>
+      )}
     </View>
   );
 };

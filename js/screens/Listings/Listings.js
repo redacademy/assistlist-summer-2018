@@ -38,7 +38,13 @@ const Listings = ({ data, searchMethods, sortPriceState, toggleSort }) => {
           />
         </TouchableOpacity>
       </View>
-      <ItemList data={data} />
+      {data.length > 0 ? (
+        <ItemList data={data} />
+      ) : (
+        <View style={styles.noItems}>
+          <Text style={styles.noItemsText}>No Listings</Text>
+        </View>
+      )}
     </View>
   );
 };
