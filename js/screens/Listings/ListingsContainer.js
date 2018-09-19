@@ -1,24 +1,46 @@
 import React, { Component } from 'react';
 import Listings from './Listings';
-import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
+import { ItemSearchContext } from '../../context/ItemsProvider';
+import { Text } from 'react-native';
 import LoadingIndicator from '../../components/LoadingIndicator';
-import { GET_ITEMS } from '../../config/queries';
-import {Text} from 'react-native'
 
 export default class ListingsContainer extends Component {
-  static navigationOptions = {
-    title: 'Listings',
+  constructor(props) {
+    super(props);
+    this.state = { priceState: false };
+  }
+
+  togglepriceState = filter => {
+    if (!this.state.priceState) {
+      filter('asc');
+    } else {
+      filter('desc');
+    }
+    this.setState(prevState => ({
+      priceState: !prevState.priceState,
+    }));
   };
+
+  static navigationOptions = { title: 'Listings' };
   render() {
     return (
-      <Query query={GET_ITEMS}>
-        {({ data, loading, error }) => {
+      <ItemSearchContext.Consumer>
+        {({ data, loading, error, filterByTitle, filterByPrice }) => {
           if (loading) return <LoadingIndicator />;
           if (error) return <Text>Error :</Text>;
-          return <Listings data={data} />;
+          return (
+            <Listings
+              data={data}
+              searchMethods={{
+                filterByTitle,
+                filterByPrice,
+              }}
+              toggleSort={filter => this.togglepriceState(filter)}
+              sortPriceState={this.state.priceState}
+            />
+          );
         }}
-      </Query>
+      </ItemSearchContext.Consumer>
     );
   }
 }
