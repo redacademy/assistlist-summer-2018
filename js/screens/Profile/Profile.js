@@ -2,19 +2,32 @@ import React from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { removeUser } from '../../config/models';
 import styles from './styles';
+import ImagePicker from 'react-native-image-picker';
+import PhotoUpload from 'react-native-photo-upload';
 
-const Profile = ({ navigation }) => {
+const Profile = ({ navigation, user, updateUser, userID }) => {
+  const img =
+    user[0].profilePic.length > 0
+      ? {
+          uri: 'data:image/jpeg;base64,' + user[0].profilePic[0],
+        }
+      : require('../../assets/images/Icons/default-user.png');
+
   return (
     <View style={styles.container}>
       <View style={styles.profileHeader}>
-        <Image
-          style={styles.userIcon}
-          source={require('../../assets/images/Icons/default-user.png')}
-        />
-        <Text style={styles.linkText}>Me</Text>
-        <TouchableOpacity onPress={() => console.log('add picture')}>
+        <PhotoUpload
+          quality={4}
+          onPhotoSelect={avatar => {
+            if (avatar) {
+              updateUser({ variables: { id: userID, pic: avatar } });
+            }
+          }}
+        >
+          <Image style={styles.userIcon} resizeMode="cover" source={img} />
           <Text style={styles.editText}>edit</Text>
-        </TouchableOpacity>
+        </PhotoUpload>
+        <Text style={styles.usernameText}>{user[0].username}</Text>
       </View>
       <View style={styles.linkGrid}>
         <TouchableOpacity onPress={() => navigation.navigate('MyListings')}>
