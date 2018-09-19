@@ -5,15 +5,12 @@ import {
   TextInput,
   Image,
   TouchableOpacity,
-  Picker,
 } from 'react-native';
 import ItemList from '../../components/ItemsList';
 import styles from './styles';
-import { colors } from '../../config/styles';
-import { ItemSearchContext } from '../../context/ItemsProvider';
 import PropTypes from 'prop-types';
 
-const Listings = ({ data, searchMethods, sortPriceState, toggleSort }) => {
+const Listings = ({ data, searchMethods, sortPriceState, toggleSort, navigation }) => {
   return (
     <View styles={styles.container}>
       <View style={styles.searchContainer}>
@@ -39,7 +36,7 @@ const Listings = ({ data, searchMethods, sortPriceState, toggleSort }) => {
         </TouchableOpacity>
       </View>
       {data.length > 0 ? (
-        <ItemList data={data} />
+        <ItemList data={data} navigation={navigation}/>
       ) : (
         <View style={styles.noItems}>
           <Text style={styles.noItemsText}>No Listings</Text>

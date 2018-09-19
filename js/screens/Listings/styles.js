@@ -5,11 +5,13 @@ const { height, width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
+    minHeight: height,
   },
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'white',
+    zIndex: 2,
   },
   searchInput: {
     position: 'relative',
@@ -30,6 +32,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignSelf: 'flex-end',
     left: 20,
+    top: 3,
     height: height / 20,
     width: width / 18,
     resizeMode: 'contain',

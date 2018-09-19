@@ -39,59 +39,64 @@ export const MyItemList = ({ data, updateItem }) => {
       style={styles.container}
       data={data}
       keyExtractor={item => '' + item.id}
-      renderItem={({ item }) => (
-        <View>
-          <View style={styles.timeContainer}>
-            <Text style={styles.timeText}>
-              Posted
-              {' ' + moment(item.createdAt).fromNow()}
-            </Text>
-          </View>
-          <View style={styles.listItem}>
-            <Image
-              style={styles.listImage}
-              source={{
-                uri:
-                  'https://cdn2.iconfinder.com/data/icons/font-awesome/1792/wheelchair-512.png',
-              }}
-            />
-            <View style={styles.listText}>
-              <Text style={styles.listTitle}>
-                {capitalizeFirstLetter(item.title)}
+      renderItem={({ item }) => {
+        const image =
+          item.images.length > 0
+            ? item.images[0]
+            : 'https://cdn2.iconfinder.com/data/icons/font-awesome/1792/wheelchair-512.png';
+        return (
+          <View>
+            <View style={styles.timeContainer}>
+              <Text style={styles.timeText}>
+                Posted
+                {' ' + moment(item.createdAt).fromNow()}
               </Text>
-              {item.price === 0 ? (
-                <Text style={styles.listPriceFree}>Free</Text>
-              ) : (
-                <Text style={styles.listPrice}>${item.price}</Text>
-              )}
-              <View style={styles.locationContainer}>
-                <Text style={styles.listLocationText}>Post Status</Text>
-                <View
-                  style={[
-                    styles.statusIcon,
-                    styles[getStatus(item.postStatus)],
-                  ]}
-                />
-                <TouchableOpacity
-                  onPress={() =>
-                    updateItem({
-                      variables: {
-                        id: item.id,
-                        date: new Date(),
-                      },
-                    })
-                  }
-                >
-                  <Image
-                    style={styles.refreshIcon}
-                    source={require('../../assets/images/Icons/refresh.png')}
+            </View>
+            <View style={styles.listItem}>
+              <Image
+                style={styles.listImage}
+                source={{
+                  uri: image,
+                }}
+              />
+              <View style={styles.listText}>
+                <Text style={styles.listTitle}>
+                  {capitalizeFirstLetter(item.title)}
+                </Text>
+                {item.price === 0 ? (
+                  <Text style={styles.listPriceFree}>Free</Text>
+                ) : (
+                  <Text style={styles.listPrice}>${item.price}</Text>
+                )}
+                <View style={styles.locationContainer}>
+                  <Text style={styles.listLocationText}>Post Status</Text>
+                  <View
+                    style={[
+                      styles.statusIcon,
+                      styles[getStatus(item.postStatus)],
+                    ]}
                   />
-                </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() =>
+                      updateItem({
+                        variables: {
+                          id: item.id,
+                          date: new Date(),
+                        },
+                      })
+                    }
+                  >
+                    <Image
+                      style={styles.refreshIcon}
+                      source={require('../../assets/images/Icons/refresh.png')}
+                    />
+                  </TouchableOpacity>
+                </View>
               </View>
             </View>
           </View>
-        </View>
-      )}
+        );
+      }}
     />
   );
 };

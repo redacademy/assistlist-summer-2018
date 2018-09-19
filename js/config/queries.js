@@ -35,6 +35,29 @@ export const GET_ITEMS = gql`
         username
       }
       price
+      postStatus
+      images
+    }
+  }
+`;
+
+export const GET_ITEM = gql`
+  query GetItem($id: ID!) {
+    Item(id: $id) {
+      title
+      id
+      price
+      subCategory {
+        title
+      }
+      location {
+        title
+      }
+      user {
+        username
+        id
+      }
+      images
     }
   }
 `;
@@ -57,6 +80,7 @@ export const USER_ITEMS = gql`
         username
       }
       postStatus
+      images
     }
   }
 `;
@@ -113,6 +137,22 @@ export const GET_SUBCATEGORIES = gql`
       items {
         title
       }
+    }
+  }
+`;
+
+export const CREATE_CHAT = gql`
+  mutation CreateChat(
+    $participantsIdOne: ID!
+    $participantsIdTwo: ID!
+    $itemId: ID!
+  ) {
+    createChat(
+      itemId: $itemId
+      messagesIds: []
+      participantsIds: [$participantsIdOne, $participantsIdTwo]
+    ) {
+      id
     }
   }
 `;
