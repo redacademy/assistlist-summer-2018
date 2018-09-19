@@ -51,6 +51,17 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: colors.grey,
   },
+  noItems: {
+    flex: 1,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+  },
+  noItemsText: {
+    textAlign: 'center',
+    fontSize: 24,
+    fontFamily: fonts.main,
+    color: colors.darkBlue,
+  },
 });
 
 export default styles;
