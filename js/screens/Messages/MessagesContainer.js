@@ -5,7 +5,7 @@ import ChatMenu from '../../components/ChatMenu';
 
 export default class MessagesContainer extends Component {
   static navigationOptions = {
-    title: 'Messages',
+    title: 'My Messages',
     headerRight: <ChatMenu />,
   };
   render() {

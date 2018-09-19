@@ -17,12 +17,14 @@ import OnBoarding from '../screens/OnBoarding';
 import CommunityPartners from './../screens/CommunityPartners';
 import AboutUs from './../screens/AboutUs';
 import CreateItemNav from '../components/CreateItemNav/CreateItemNav';
+import { sharedNavigationOptions } from './config';
 
 export const authStack = createStackNavigator(
   {
     AccountForm: {
       screen: AccountForm,
     },
+
     OnBoarding: {
       screen: OnBoarding,
     },
@@ -31,46 +33,81 @@ export const authStack = createStackNavigator(
     headerMode: 'none',
   }
 );
-const aboutStack = createStackNavigator({
-  About: {
-    screen: About,
+const aboutStack = createStackNavigator(
+  {
+    About: {
+      screen: About,
+    },
+    AboutUs: {
+      screen: AboutUs,
+    },
+    CommunityPartners: {
+      screen: CommunityPartners,
+    },
   },
-  AboutUs: {
-    screen: AboutUs,
+  {
+    navigationOptions: ({ navigation }) => ({
+      ...sharedNavigationOptions(navigation),
+    }),
+  }
+);
+const createItemStack = createStackNavigator(
+  {
+    CreateItem: {
+      screen: CreateItem,
+    },
   },
-  CommunityPartners: {
-    screen: CommunityPartners,
+  {
+    navigationOptions: ({ navigation }) => ({
+      ...sharedNavigationOptions(navigation),
+    }),
+  }
+);
+const listingsStack = createStackNavigator(
+  {
+    Listings: {
+      screen: Listings,
+    },
   },
-});
-const createItemStack = createStackNavigator({
-  CreateItem: {
-    screen: CreateItem,
+  {
+    navigationOptions: ({ navigation }) => ({
+      ...sharedNavigationOptions(navigation),
+    }),
+  }
+);
+const messagesStack = createStackNavigator(
+  {
+    Messages: {
+      screen: Messages,
+    },
   },
-});
-const listingsStack = createStackNavigator({
-  Listings: {
-    screen: Listings,
+  {
+    navigationOptions: ({ navigation }) => ({
+      ...sharedNavigationOptions(navigation),
+    }),
+  }
+);
+const profileStack = createStackNavigator(
+  {
+    Profile: {
+      screen: Profile,
+    },
+    EditProfile: {
+      screen: EditProfile,
+    },
+    MyListings: {
+      screen: MyListings,
+    },
+    Notifications: {
+      screen: Notifications,
+    },
   },
-});
-const messagesStack = createStackNavigator({
-  Messages: {
-    screen: Messages,
-  },
-});
-const profileStack = createStackNavigator({
-  Profile: {
-    screen: Profile,
-  },
-  EditProfile: {
-    screen: EditProfile,
-  },
-  MyListings: {
-    screen: MyListings,
-  },
-  Notifications: {
-    screen: Notifications,
-  },
-});
+  {
+    navigationOptions: ({ navigation }) => ({
+      ...sharedNavigationOptions(navigation),
+    }),
+  }
+);
 
 export default createBottomTabNavigator(
   {
