@@ -6,7 +6,6 @@ export default class CreateItemContainer extends Component {
   static navigationOptions = {
     title: 'Create Item',
   };
-
   locationlist = [
     {
       label: `Select a Location`,
@@ -45,6 +44,7 @@ export default class CreateItemContainer extends Component {
               createItem={createItem}
               locationList={this.locationlist}
               categoryList={this.categorylist}
+              navigation={this.props.navigation}
             />
           );
         }}

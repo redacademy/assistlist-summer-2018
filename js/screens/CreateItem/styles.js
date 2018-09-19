@@ -115,16 +115,13 @@ const styles = StyleSheet.create({
   },
   priceContainer: {
     justifyContent: 'flex-start',
-    flex: 0.7,
-  },
-  inputPrice: {
+    alignItems: 'center',
+    flex: 1,
+    flexWrap: 'wrap',
     flexDirection: 'row',
-    fontSize: 16,
     borderWidth: 1,
     borderColor: colors.darkBlue,
     borderRadius: 4,
-    backgroundColor: 'white',
-    color: 'black',
   },
   freeContainer: {
     flex: 1,
@@ -134,9 +131,13 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   dollarSign: {
-    paddingVertical: 10,
     fontSize: 18,
-    paddingHorizontal: 5,
+    paddingLeft: 5,
+  },
+  dollarText: {
+    flex: 1,
+    backgroundColor: 'white',
+    marginLeft: 20,
   },
 });
 

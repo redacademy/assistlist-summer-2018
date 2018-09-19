@@ -33,6 +33,8 @@ class CreateItem extends Component {
       subCategory: '',
       location: '',
     };
+    this.child = React.createRef();
+    this.child2 = React.createRef();
   }
 
   getCategory = categoryId => {
@@ -54,6 +56,10 @@ class CreateItem extends Component {
         this.setState({ photos: photoArray });
       }
     });
+  };
+  onClick = () => {
+    this.child.current.clearInput();
+    this.child2.current.clearInput();
   };
 
   render() {
@@ -92,25 +98,37 @@ class CreateItem extends Component {
             })}
           </View>
           <Form
-            onSubmit={values => {
+            onSubmit={(values, form) => {
               let finalPhotos = [...this.state.photos].filter(
                 photos => photos !== 1
               );
+              let priceValue = this.state.SwitchValue
+                ? 0
+                : parseInt(values.price);
 
-              this.props.createItem.mutation({
-                variables: {
-                  userId: getUser()[0].id,
-                  locationId: this.state.location,
-                  title: values.title,
-                  description: values.description,
-                  price: parseInt(values.price),
-                  postStatus: moment().format(),
-                  subCategoryId: this.state.subCategory,
-                  images: finalPhotos,
-                },
-              });
+              this.props.createItem
+                .mutation({
+                  variables: {
+                    userId: getUser()[0].id,
+                    locationId: this.state.location,
+                    title: values.title,
+                    description: values.description,
+                    price: priceValue,
+                    postStatus: moment().format(),
+                    subCategoryId: this.state.subCategory,
+                    images: finalPhotos,
+                  },
+                })
+                .then(() => {
+                  form.reset();
+                  this.onClick();
+                  this.setState({
+                    photos: [addImageIcon, addImageIcon, addImageIcon],
+                  });
+                })
+                .then(() => this.props.navigation.navigate('MyListings'));
             }}
-            render={({ handleSubmit, pristine, invalid, values }) => (
+            render={({ handleSubmit, pristine, invalid, values, form }) => (
               <Fragment>
                 <Field
                   name="category"
@@ -118,9 +136,11 @@ class CreateItem extends Component {
                     <Fragment>
                       <Text style={styles.title}>Category *</Text>
                       <SelectInput
+                        ref={this.child}
                         question={'category'}
                         data={this.props.categoryList}
                         getCategory={this.getCategory}
+                        clearInput={this.clearInput}
                       />
                     </Fragment>
                   )}
@@ -144,16 +164,14 @@ class CreateItem extends Component {
                     name="price"
                     render={({ input, meta }) => (
                       <View style={styles.priceContainer}>
-                        <View style={styles.inputPrice}>
-                          <Text style={styles.dollarSign}>$</Text>
-                          <TextInput
-                            editable={!this.state.SwitchValue}
-                            placeholder="Price"
-                            {...input}
-                            keyboardType={'numeric'}
-                            style={styles.dollarText}
-                          />
-                        </View>
+                        <Text style={styles.dollarSign}>$</Text>
+                        <TextInput
+                          editable={!this.state.SwitchValue}
+                          placeholder="price"
+                          {...input}
+                          keyboardType={'numeric'}
+                          style={styles.dollarText}
+                        />
                       </View>
                     )}
                   />
@@ -174,6 +192,7 @@ class CreateItem extends Component {
                     <Fragment>
                       <Text style={styles.title}>Location</Text>
                       <SelectInput
+                        ref={this.child2}
                         question={'location'}
                         data={this.props.locationList}
                         getLocation={this.getLocation}
