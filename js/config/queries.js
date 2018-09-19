@@ -22,8 +22,9 @@ export const GET_ITEMS = gql`
     allItems(filter: $filter, orderBy: $order) {
       title
       id
-      createdAt
-      price
+      title
+      postStatus
+      description
       location {
         title
       }
@@ -31,10 +32,9 @@ export const GET_ITEMS = gql`
         title
       }
       user {
-        id
         username
       }
-      postStatus
+      price
     }
   }
 `;
@@ -61,10 +61,58 @@ export const USER_ITEMS = gql`
   }
 `;
 
+export const CREATE_ITEM = gql`
+  mutation(
+    $locationId: ID
+    $title: String!
+    $description: String
+    $images: [String!]!
+    $price: Int
+    $userId: ID
+    $postStatus: DateTime
+    $subCategoryId: ID
+  ) {
+    createItem(
+      locationId: $locationId
+      title: $title
+      description: $description
+      images: $images
+      price: $price
+      userId: $userId
+      postStatus: $postStatus
+      subCategoryId: $subCategoryId
+    ) {
+      title
+      id
+    }
+  }
+`;
+
+export const GET_LOCATIONS = gql`
+  query {
+    allLocations {
+      title
+      id
+    }
+  }
+`;
+
 export const ITEM_STATUS = gql`
   mutation($id: ID!, $date: DateTime) {
     updateItem(id: $id, postStatus: $date) {
       id
+    }
+  }
+`;
+
+export const GET_SUBCATEGORIES = gql`
+  query($filter: SubCategoryFilter) {
+    allSubCategories(filter: $filter) {
+      id
+      title
+      items {
+        title
+      }
     }
   }
 `;
