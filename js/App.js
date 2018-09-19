@@ -4,6 +4,7 @@ import { ApolloProvider } from 'react-apollo';
 import SplashScreen from 'react-native-splash-screen';
 import createRootNavigator from './navigation/RootStackNavigation';
 import { getUser } from './config/models';
+import { UserProvider } from './context/UserContext';
 import ItemsProvider from './context/ItemsProvider';
 
 export default class App extends Component {
@@ -26,7 +27,9 @@ export default class App extends Component {
     return (
       <ApolloProvider client={client}>
         <ItemsProvider client={client}>
-          <Layout />
+          <UserProvider>
+            <Layout />
+          </UserProvider>
         </ItemsProvider>
       </ApolloProvider>
     );
