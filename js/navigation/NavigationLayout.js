@@ -7,6 +7,7 @@ import {
 import About from './../screens/About';
 import CreateItem from './../screens/CreateItem';
 import Listings from './../screens/Listings';
+import SingleListing from './../screens/SingleListing'
 import Messages from './../screens/Messages';
 import Profile from './../screens/Profile';
 import EditProfile from './../screens/EditProfile';
@@ -51,6 +52,9 @@ const listingsStack = createStackNavigator({
   Listings: {
     screen: Listings,
   },
+  SingleListing: {
+    screen: SingleListing,
+  }
 });
 const messagesStack = createStackNavigator({
   Messages: {
