@@ -7,10 +7,16 @@ export default class SelectInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      label: undefined,
       value: undefined,
       showPicker: false,
     };
   }
+  labelArr = this.props.data;
+  clearInput() {
+    this.setState({ label: undefined, value: undefined });
+  }
+
   renderPickerItems() {
     return this.props.data.map(item => {
       return (
@@ -23,7 +29,6 @@ export default class SelectInput extends Component {
     });
   }
 
-
   render() {
     return (
       <View>
@@ -31,17 +36,15 @@ export default class SelectInput extends Component {
           onPress={() => this.setState({ showPicker: !this.state.showPicker })}
         >
           <Text style={styles.input}>
-            {this.state.value
-              ? this.state.value.replace(/^\w/, c => c.toUpperCase())
-              : ' '}
+            {this.state.label ? this.state.label : ' '}
           </Text>
           {this.state.showPicker ? (
             <View style={styles.iconRight} />
           ) : (
-              <View style={styles.iconPlay}>
-                <Icon name="play" size={18} color={styles.iconPlay.color} />
-              </View>
-            )}
+            <View style={styles.iconPlay}>
+              <Icon name="play" size={18} color={styles.iconPlay.color} />
+            </View>
+          )}
         </TouchableOpacity>
         <Modal
           visible={this.state.showPicker}
@@ -58,16 +61,24 @@ export default class SelectInput extends Component {
           <View style={styles.modalViewBottom}>
             <Picker
               selectedValue={this.state.value}
-              onValueChange={(itemValue, itemIndex, item) =>
-                this.setState({ value: itemValue },
-                  this.props.question == 'location' ? () => this.props.getLocation(this.state.value) : () => this.props.getCategory(this.state.value))}
+              onValueChange={(itemValue, itemIndex) => {
+                labelValue = this.labelArr.filter(
+                  data => data.value == itemValue
+                );
+                return this.setState(
+                  { value: itemValue, label: labelValue[0].label },
+                  this.props.question == 'location'
+                    ? () => this.props.getLocation(this.state.value)
+                    : () => this.props.getCategory(this.state.value)
+                );
+              }}
               placeholderStyle={{ color: 'white' }}
             >
               {this.renderPickerItems()}
             </Picker>
           </View>
         </Modal>
-      </View >
+      </View>
     );
   }
 }

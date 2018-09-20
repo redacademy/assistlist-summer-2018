@@ -2,7 +2,6 @@ import React from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { removeUser } from '../../config/models';
 import styles from './styles';
-import ImagePicker from 'react-native-image-picker';
 import PhotoUpload from 'react-native-photo-upload';
 
 const Profile = ({ navigation, user, updateUser, userID }) => {
