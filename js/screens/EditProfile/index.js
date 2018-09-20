@@ -1,3 +1,3 @@
-import EditProfile from './EditProfile';
+import EditProfileContainer from './EditProfileContainer';
 
-export default EditProfile;
+export default EditProfileContainer;

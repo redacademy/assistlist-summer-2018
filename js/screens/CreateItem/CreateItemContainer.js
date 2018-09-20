@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import CreateItem from './CreateItem';
 import ItemContainer from '../../containers/ItemContainer';
+import SubmissionModal from '../../components/SubmissionModal';
 
 export default class CreateItemContainer extends Component {
   static navigationOptions = {
     title: 'Create Item',
+    headerLeft: <SubmissionModal />,
   };
 
   locationlist = [

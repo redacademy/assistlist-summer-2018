@@ -3,7 +3,7 @@ import About from './About';
 
 export default class AboutContainer extends Component {
   static navigationOptions = {
-    title: 'About',
+    title: 'About Us',
   };
   render() {
     return <About navigation={this.props.navigation} />;
