@@ -10,19 +10,11 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import { Form, Field } from 'react-final-form';
-import ImagePicker from 'react-native-image-picker';
 import moment from 'moment';
 import SelectInput from '../../components/SelectInput';
 import styles from './styles';
 const addImageIcon = require('../../assets/images/Icons/addImage.jpg');
-
-const options = {
-  title: 'Select Image',
-  storageOptions: {
-    skipBackup: true,
-    path: 'images',
-  },
-};
+import PhotoUpload from 'react-native-photo-upload';
 
 class CreateItem extends Component {
   constructor(props) {
@@ -46,17 +38,10 @@ class CreateItem extends Component {
     this.setState({ location: locationId });
   };
 
-  pickImage = index => {
+  pickImage = (image, index) => {
     let photoArray = [...this.state.photos];
-    ImagePicker.showImagePicker(options, response => {
-      if (response.error) {
-        return response.error;
-      }
-      if (response.data) {
-        photoArray[index] = 'data:image/jpeg;base64,' + response.data;
-        this.setState({ photos: photoArray });
-      }
-    });
+    photoArray[index] = image;
+    this.setState({ photos: photoArray });
   };
   onClick = () => {
     this.child.current.clearInput();
@@ -64,7 +49,6 @@ class CreateItem extends Component {
   };
 
   render() {
-    console.log(this.props);
     return this.state.loading ? (
       <ActivityIndicator size="large" />
     ) : (
@@ -73,10 +57,13 @@ class CreateItem extends Component {
           <View style={styles.imageSelect}>
             {this.state.photos.map((image, index) => {
               return (
-                <TouchableOpacity
+                <PhotoUpload
                   key={index}
-                  onPress={() => {
-                    this.pickImage(index);
+                  quality={4}
+                  onPhotoSelect={avatar => {
+                    if (avatar) {
+                      this.pickImage(avatar, index);
+                    }
                   }}
                 >
                   {image !== addImageIcon ? (
@@ -84,20 +71,18 @@ class CreateItem extends Component {
                       <View style={styles.defaultImageContainer}>
                         <Image
                           style={styles.selectedImage}
-                          source={{
-                            uri: image,
-                          }}
+                          source={{ uri: 'data:image/jpeg;base64,' + image }}
                         />
                       </View>
                     </View>
                   ) : (
                     <View style={styles.option}>
                       <View style={styles.defaultImageContainer}>
-                        <Image style={styles.defaultImage} source={image} />
+                        <Image style={styles.selectedImage} source={image} />
                       </View>
                     </View>
                   )}
-                </TouchableOpacity>
+                </PhotoUpload>
               );
             })}
           </View>
@@ -109,7 +94,7 @@ class CreateItem extends Component {
                 : parseInt(values.price);
 
               try {
-                const data = await this.props.createItem.mutation({
+                await this.props.createItem.mutation({
                   variables: {
                     userId: this.props.userId,
                     locationId: this.state.location,
@@ -121,9 +106,7 @@ class CreateItem extends Component {
                     images: this.state.photos,
                   },
                 });
-                console.log('data', data);
                 form.reset();
-                this.onClick();
                 this.setState({
                   photos: [addImageIcon, addImageIcon, addImageIcon],
                   loading: !this.state.loading,
