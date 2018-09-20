@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Modal, TouchableOpacity } from 'react-native';
 import styles from './styles';
+import PropTypes from 'prop-types';
 
 class SafetyTips extends Component {
   constructor(props) {
@@ -57,4 +58,9 @@ class SafetyTips extends Component {
     );
   }
 }
+
+SafetyTips.propTypes = {
+  toggleModal: PropTypes.func,
+};
+
 export default SafetyTips;

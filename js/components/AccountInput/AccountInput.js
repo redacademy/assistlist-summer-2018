@@ -1,6 +1,7 @@
 import React from 'react';
 import { TextInput } from 'react-native';
 import styles from './styles';
+import PropTypes from 'prop-types';
 
 export const AccountInput = ({ input, placeholder, password, invalid }) => {
   return (
@@ -15,4 +16,9 @@ export const AccountInput = ({ input, placeholder, password, invalid }) => {
       secureTextEntry={password}
     />
   );
+};
+
+AccountInput.propTypes = {
+  input: PropTypes.object.isRequired,
+  placeholder: PropTypes.string.isRequired,
 };

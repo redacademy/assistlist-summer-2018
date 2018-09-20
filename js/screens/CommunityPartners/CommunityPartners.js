@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 import styles from './styles';
-
+import PropTypes from 'prop-types';
 const CommunityPartners = () => {
   return (
     <View style={styles.container}>
@@ -21,6 +21,10 @@ const CommunityPartners = () => {
       </View>
     </View>
   );
+};
+
+CommunityPartners.propTypes = {
+  navigation: PropTypes.object.isRequired,
 };
 
 export default CommunityPartners;

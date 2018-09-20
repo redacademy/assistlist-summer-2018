@@ -1,8 +1,8 @@
 import React from 'react';
-import { Text, View, TextInput, Image, TouchableOpacity } from 'react-native';
+import { View, TextInput, Image, TouchableOpacity } from 'react-native';
 import ItemList from '../../components/ItemsList';
 import styles from './styles';
-import { colors } from '../../config/styles';
+import PropTypes from 'prop-types';
 
 const Listings = ({ data }) => {
   return (
@@ -29,4 +29,9 @@ const Listings = ({ data }) => {
     </View>
   );
 };
+
+Listings.propTypes = {
+  data: PropTypes.object.isRequired,
+};
+
 export default Listings;

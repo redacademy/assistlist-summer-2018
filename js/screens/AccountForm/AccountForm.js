@@ -6,6 +6,7 @@ import styles from './styles';
 import { validateLogin, validateSignup } from './helpers/validation';
 import LoadingIndicator from '../../components/LoadingIndicator';
 import { addUser } from '../../config/models';
+import PropTypes from 'prop-types';
 
 const AccountForm = ({ formState, toggleForm, signup, login, navigation }) => {
   return (
@@ -26,8 +27,8 @@ const AccountForm = ({ formState, toggleForm, signup, login, navigation }) => {
                       addUser(
                         res.data.signupUser.id,
                         res.data.signupUser.token
-                      )}
-                    )
+                      );
+                    })
                     .then(() => navigation.navigate('OnBoarding'))
                     .catch(err => err);
                 }
@@ -151,6 +152,12 @@ const AccountForm = ({ formState, toggleForm, signup, login, navigation }) => {
       ) : null}
     </View>
   );
+};
+AccountForm.propTypes = {
+  toggleForm: PropTypes.func.isRequired,
+  signup: PropTypes.object.isRequired,
+  login: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired,
 };
 
 export default AccountForm;

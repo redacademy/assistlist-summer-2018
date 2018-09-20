@@ -1,16 +1,17 @@
 import React from 'react';
 import { Text, Image, View } from 'react-native';
 import Onboarding from 'react-native-onboarding-swiper';
-import { colors } from '../../config/styles'
-import styles from './styles'
+import { colors } from '../../config/styles';
+import styles from './styles';
+import PropTypes from 'prop-types';
 
 const SubtitleComp = props => {
-  return (<Text style={styles[props.style]}>{props.subtitle}</Text>)
+  return <Text style={styles[props.style]}>{props.subtitle}</Text>;
 };
 
 const Title = () => {
-  return <Text></Text>
-}
+  return <Text />;
+};
 const Circle = ({ selected }) => {
   let backgroundColor = colors.darkBlue;
   backgroundColor = selected ? colors.darkBlue : 'white';
@@ -81,7 +82,6 @@ const OnBoarding = ({ navigation }) => {
 When your listing ranking drops you can hit refresh in My listings to bump it up to the top! `}
           style={'lastText'}
         />
-
       ),
       backgroundColor: 'white',
     },
@@ -98,8 +98,10 @@ When your listing ranking drops you can hit refresh in My listings to bump it up
       imageContainerStyles={styles.ImageContainer}
       DotComponent={Circle}
     />
-
   );
+};
+Onboarding.propTypes = {
+  navigation: PropTypes.object.isRequired,
 };
 
 export default OnBoarding;
