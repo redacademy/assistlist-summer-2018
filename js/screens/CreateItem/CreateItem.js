@@ -40,7 +40,7 @@ class CreateItem extends Component {
 
   pickImage = (image, index) => {
     let photoArray = [...this.state.photos];
-    photoArray[index] = image;
+    photoArray[index] = 'data:image/jpeg;base64,' + image;
     this.setState({ photos: photoArray });
   };
   onClick = () => {
@@ -71,7 +71,7 @@ class CreateItem extends Component {
                       <View style={styles.defaultImageContainer}>
                         <Image
                           style={styles.selectedImage}
-                          source={{ uri: 'data:image/jpeg;base64,' + image }}
+                          source={{ uri: image }}
                         />
                       </View>
                     </View>
