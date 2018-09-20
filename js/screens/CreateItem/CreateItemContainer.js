@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CreateItem from './CreateItem';
 import ItemContainer from '../../containers/ItemContainer';
+import UserContext from '../../context/UserContext';
 
 export default class CreateItemContainer extends Component {
   static navigationOptions = {
@@ -20,35 +21,42 @@ export default class CreateItemContainer extends Component {
   ];
   render() {
     return (
-      <ItemContainer>
-        {({ createItem, subcategories, locations }) => {
-          if (
-            locations.data.allLocations &&
-            subcategories.data.allSubCategories
-          ) {
-            subcategories.data.allSubCategories.map(subcategory =>
-              this.categorylist.push({
-                label: subcategory.title,
-                value: subcategory.id,
-              })
-            );
-            locations.data.allLocations.map(location =>
-              this.locationlist.push({
-                label: location.title,
-                value: location.id,
-              })
-            );
-          }
+      <UserContext.Consumer>
+        {values => {
           return (
-            <CreateItem
-              createItem={createItem}
-              locationList={this.locationlist}
-              categoryList={this.categorylist}
-              navigation={this.props.navigation}
-            />
+            <ItemContainer>
+              {({ createItem, subcategories, locations }) => {
+                if (
+                  locations.data.allLocations &&
+                  subcategories.data.allSubCategories
+                ) {
+                  subcategories.data.allSubCategories.map(subcategory =>
+                    this.categorylist.push({
+                      label: subcategory.title,
+                      value: subcategory.id,
+                    })
+                  );
+                  locations.data.allLocations.map(location =>
+                    this.locationlist.push({
+                      label: location.title,
+                      value: location.id,
+                    })
+                  );
+                }
+                return (
+                  <CreateItem
+                    createItem={createItem}
+                    locationList={this.locationlist}
+                    categoryList={this.categorylist}
+                    navigation={this.props.navigation}
+                    userId={values.currentUser.id}
+                  />
+                );
+              }}
+            </ItemContainer>
           );
         }}
-      </ItemContainer>
+      </UserContext.Consumer>
     );
   }
 }

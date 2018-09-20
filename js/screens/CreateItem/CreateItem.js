@@ -7,13 +7,13 @@ import {
   TouchableOpacity,
   Switch,
   Image,
+  ActivityIndicator,
 } from 'react-native';
 import { Form, Field } from 'react-final-form';
 import ImagePicker from 'react-native-image-picker';
 import moment from 'moment';
 import SelectInput from '../../components/SelectInput';
 import styles from './styles';
-import { getUser } from '../../config/models';
 const addImageIcon = require('../../assets/images/Icons/addImage.jpg');
 
 const options = {
@@ -32,6 +32,7 @@ class CreateItem extends Component {
       photos: [addImageIcon, addImageIcon, addImageIcon],
       subCategory: '',
       location: '',
+      loading: false,
     };
     this.child = React.createRef();
     this.child2 = React.createRef();
@@ -63,7 +64,10 @@ class CreateItem extends Component {
   };
 
   render() {
-    return (
+    console.log(this.props);
+    return this.state.loading ? (
+      <ActivityIndicator size="large" />
+    ) : (
       <ScrollView style={styles.container}>
         <View style={styles.miniContainer}>
           <View style={styles.imageSelect}>
@@ -98,35 +102,36 @@ class CreateItem extends Component {
             })}
           </View>
           <Form
-            onSubmit={(values, form) => {
-              let finalPhotos = [...this.state.photos].filter(
-                photos => photos !== 1
-              );
+            onSubmit={async (values, form) => {
+              this.setState({ loading: !this.state.loading });
               let priceValue = this.state.SwitchValue
                 ? 0
                 : parseInt(values.price);
 
-              this.props.createItem
-                .mutation({
+              try {
+                const data = await this.props.createItem.mutation({
                   variables: {
-                    userId: getUser()[0].id,
+                    userId: this.props.userId,
                     locationId: this.state.location,
                     title: values.title,
                     description: values.description,
                     price: priceValue,
                     postStatus: moment().format(),
                     subCategoryId: this.state.subCategory,
-                    images: finalPhotos,
+                    images: this.state.photos,
                   },
-                })
-                .then(() => {
-                  form.reset();
-                  this.onClick();
-                  this.setState({
-                    photos: [addImageIcon, addImageIcon, addImageIcon],
-                  });
-                })
-                .then(() => this.props.navigation.navigate('MyListings'));
+                });
+                console.log('data', data);
+                form.reset();
+                this.onClick();
+                this.setState({
+                  photos: [addImageIcon, addImageIcon, addImageIcon],
+                  loading: !this.state.loading,
+                });
+                this.props.navigation.navigate('MyListings');
+              } catch (e) {
+                console.log(e);
+              }
             }}
             render={({ handleSubmit, pristine, invalid, values, form }) => (
               <Fragment>
@@ -225,6 +230,7 @@ class CreateItem extends Component {
                   <TouchableOpacity
                     style={styles.button}
                     onPress={handleSubmit}
+                    disabled={pristine}
                   >
                     <Text style={styles.buttonText}>Confirm</Text>
                   </TouchableOpacity>
