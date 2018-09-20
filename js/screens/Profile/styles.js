@@ -9,25 +9,28 @@ const styles = StyleSheet.create({
     height: height,
   },
   profileHeader: {
+    flex: 0.6,
     alignItems: 'center',
     borderBottomColor: colors.darkBlue,
     borderBottomWidth: 0.5,
-    paddingVertical: 15,
   },
   userIcon: {
     height: height / 5,
-    width: width / 5,
-    overflow: 'visible',
-  },
-  linkText: {
-    color: colors.darkBlue,
-    fontFamily: fonts.main,
-    fontSize: 24,
-    fontWeight: 'bold',
+    width: height / 5,
+    borderRadius: height / 10,
+    overflow: 'hidden',
   },
   editText: {
     marginTop: 5,
     fontFamily: fonts.main,
+    alignSelf: 'center',
+  },
+  usernameText: {
+    color: colors.darkBlue,
+    fontFamily: fonts.main,
+    fontSize: 24,
+    fontWeight: 'bold',
+    paddingBottom: 5,
   },
   icon: {
     height: height / 6,
@@ -45,7 +48,7 @@ const styles = StyleSheet.create({
     width: width / 2,
   },
   gridText: {
-    marginBottom: 20,
+    marginBottom: 10,
     fontFamily: fonts.main,
   },
 });
